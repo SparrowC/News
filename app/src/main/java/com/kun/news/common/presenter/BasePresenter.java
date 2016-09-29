@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public abstract class BasePresenter<D, V extends IBaseView> {
     protected V mView;
     protected D mData;
+    private Object mApi;
 
     public void bindView(V view) {
         mView = view;
@@ -23,7 +24,14 @@ public abstract class BasePresenter<D, V extends IBaseView> {
     public void loadMoreData(Object... params){}
 
     protected Object getApiService(String url, Class clz) {
-        return getRetrofit(url).create(clz);
+        if(mApi==null){
+            synchronized (BasePresenter.class){
+                if(mApi==null){
+                    mApi=getRetrofit(url).create(clz);
+                }
+            }
+        }
+        return mApi;
     }
 
     protected Retrofit getRetrofit(String url) {

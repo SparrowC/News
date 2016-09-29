@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nev_item"
+    android:orientation="vertical"
+    android:transitionName="@string/transition_shot_background">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/bg_image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY"/>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nest"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="260dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nba_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/nev_item"
+                    android:textSize="20dp"/>
+
+                <!--解决nestView无法滑倒低端-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:background="@color/background_light"/>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <include layout="@layout/title_bar"/>
+    </FrameLayout>
+</LinearLayout>
