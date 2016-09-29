@@ -8,6 +8,8 @@ import com.kun.news.R;
 import com.kun.news.common.adapter.BaseViewHolder;
 import com.kun.news.http.bean.zhihu.ZhihuComments;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import butterknife.Bind;
@@ -41,8 +43,15 @@ public class CommentViewHolder extends BaseViewHolder<ZhihuComments.CommentsBean
         mAvatar.setImageURI(data.getAvatar());
         mComment.setText(data.getContent());
         mLikes.setText(data.getLikes() + "赞");
-        Date date = new Date(data.getTime());
-        String dateStr = date.getYear() + "-" + date.getMonth() + "-" + date.getDate();
-        mDate.setText(dateStr);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+//            Date date = format.parse());
+//            String dateStr = date.getYear() + "-" + date.getMonth() + "-" + date.getDate();
+            mDate.setText(format.format(new Long(data.getTime())));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        Date date = new Date(data.getTime() * 10000);
+
     }
 }

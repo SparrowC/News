@@ -14,6 +14,7 @@ import com.kun.news.common.activty.SlideActivity;
 import com.kun.news.common.utils.UIUtils;
 import com.kun.news.common.utils.WebUtil;
 import com.kun.news.http.bean.zhihu.ZhihuStory;
+import com.kun.news.http.bean.zhihu.ZhihuStoryExtra;
 import com.kun.news.zhihu.presenter.DetailPresenter;
 import com.kun.news.zhihu.presenter.DetailView;
 
@@ -33,6 +34,10 @@ public class NewsDetailActivity extends SlideActivity implements DetailView {
     SimpleDraweeView mBgImage;
     @Bind(R.id.title)
     TextView mTitle;
+    @Bind(R.id.likes)
+    TextView mLikes;
+    @Bind(R.id.comment_count)
+    TextView mCommentCount;
     private DetailPresenter mPresenter;
     private String mId;
 
@@ -46,6 +51,10 @@ public class NewsDetailActivity extends SlideActivity implements DetailView {
         mPresenter = new DetailPresenter();
         mPresenter.bindView(this);
         mPresenter.refreshData(mId);
+        mPresenter.requestExtra(mId);
+
+        mLikes.setText(0 + "赞");
+        mCommentCount.setText(0 + "评论");
     }
 
     @Override
@@ -56,7 +65,8 @@ public class NewsDetailActivity extends SlideActivity implements DetailView {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.unbindView();
+        if (mPresenter != null)
+            mPresenter.unbindView();
         ButterKnife.unbind(this);
     }
 
@@ -65,12 +75,13 @@ public class NewsDetailActivity extends SlideActivity implements DetailView {
         onBackPressed();
     }
 
-    @OnClick(R.id.comment)
-    public void enterComment(View view){
-        Intent intent=new Intent(this,CommentActivity.class);
+    @OnClick(R.id.comment_count)
+    public void enterComment(View view) {
+        Intent intent = new Intent(this, CommentActivity.class);
         intent.putExtra(Constant.EXTRA_NEWS_ID, mId);
         startActivity(intent);
     }
+
     @Override
     protected int getLayout() {
         return R.layout.activity_news_detail;
@@ -95,6 +106,17 @@ public class NewsDetailActivity extends SlideActivity implements DetailView {
 
     @Override
     public void onLoadFailed() {
+
+    }
+
+    @Override
+    public void onLoadExtraSuccess(ZhihuStoryExtra extra) {
+        mLikes.setText(extra.getPopularity() + "赞");
+        mCommentCount.setText(extra.getComments() + "评论");
+    }
+
+    @Override
+    public void onLoadExtraFailed() {
 
     }
 }

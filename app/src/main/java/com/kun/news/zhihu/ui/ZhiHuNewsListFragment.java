@@ -1,5 +1,6 @@
-package com.kun.news.zhihu;
+package com.kun.news.zhihu.ui;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -9,12 +10,17 @@ import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.kun.news.R;
+import com.kun.news.app.Constant;
+import com.kun.news.common.adapter.BaseAdapter;
 import com.kun.news.common.fragment.AbsFragment;
+import com.kun.news.common.presenter.BasePresenter;
 import com.kun.news.http.bean.zhihu.ZhihuDailyItem;
 import com.kun.news.zhihu.adapter.FeedAdapter;
+import com.kun.news.zhihu.adapter.HotFeedAdapter;
 import com.kun.news.zhihu.event.ScrollEvent;
-import com.kun.news.zhihu.presenter.FeedPresenter;
+import com.kun.news.zhihu.presenter.ZhihuFeedPresenter;
 import com.kun.news.zhihu.presenter.FeedView;
+import com.kun.news.zhihu.presenter.ZhihuHotFeedPresenter;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -25,23 +31,42 @@ import java.util.List;
  * Created by jiangkun on 16/9/24.
  */
 
-public class ZhiHuFragment extends AbsFragment implements OnRefreshListener, OnLoadMoreListener, FeedView {
+public class ZhiHuNewsListFragment extends AbsFragment implements OnRefreshListener, OnLoadMoreListener, FeedView {
+
     private RecyclerView mListView;
     private SwipeToLoadLayout mSwipeToLoadLayout;
-    private FeedAdapter mAdapter;
-    private FeedPresenter mPresenter;
+    private BaseAdapter mAdapter;
+    private BasePresenter mPresenter;
     private String mDate;
+    private int mType;
+
+    public static ZhiHuNewsListFragment newInstance(int type) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(Constant.EXTRA_ZHIHU_TYPE, type);
+        ZhiHuNewsListFragment fragment = new ZhiHuNewsListFragment();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     protected void initData() {
-        mAdapter = new FeedAdapter();
+        switch (mType) {
+            case Constant.HOT:
+                mPresenter = new ZhihuHotFeedPresenter();
+                mAdapter = new HotFeedAdapter();
+                break;
+            case Constant.NEWS:
+                mPresenter = new ZhihuFeedPresenter();
+                mAdapter = new FeedAdapter();
+                break;
+        }
+        mPresenter.bindView(this);
         mListView.setHasFixedSize(true);
         mListView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mListView.setOverScrollMode(View.OVER_SCROLL_ALWAYS);
         mListView.setAdapter(mAdapter);
-        mPresenter = new FeedPresenter();
-        mPresenter.bindView(this);
-        autoRefresh();
+
+        onRefresh();
         mListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -56,8 +81,20 @@ public class ZhiHuFragment extends AbsFragment implements OnRefreshListener, OnL
         });
     }
 
+    private void initArguments() {
+        mType = getArguments().getInt(Constant.EXTRA_ZHIHU_TYPE);
+        if (mType != Constant.HOT && mType != Constant.NEWS)
+            return;
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_zhihu_news_list;
+    }
+
     @Override
     protected void initView(View root) {
+        initArguments();
         mListView = (RecyclerView) root.findViewById(R.id.swipe_target);
         mSwipeToLoadLayout = (SwipeToLoadLayout) root.findViewById(R.id.swipe_to_load_layout);
         mSwipeToLoadLayout.setOnRefreshListener(this);
@@ -71,13 +108,8 @@ public class ZhiHuFragment extends AbsFragment implements OnRefreshListener, OnL
     }
 
     @Override
-    protected int getLayout() {
-        return R.layout.fragment_zhihu;
-    }
-
-    @Override
     public void onRefresh() {
-        mPresenter.refreshData();
+        mPresenter.refreshData(mType);
     }
 
     @Override
@@ -89,14 +121,13 @@ public class ZhiHuFragment extends AbsFragment implements OnRefreshListener, OnL
         }
     }
 
-    public void autoRefresh() {
-        mPresenter.refreshData();
-    }
-
-
     @Override
-    public void onRefreshSuccess(List<ZhihuDailyItem> data, Object... date) {
-        mDate = (String) date[0];
+    public void onRefreshSuccess(List data, Object... extra) {
+        if (extra.length <= 0) {
+            mSwipeToLoadLayout.setLoadMoreEnabled(false);
+        } else {
+            mDate = (String) extra[0];
+        }
         mAdapter.setData(data);
         mSwipeToLoadLayout.setRefreshing(false);
     }
@@ -107,11 +138,12 @@ public class ZhiHuFragment extends AbsFragment implements OnRefreshListener, OnL
     }
 
     @Override
-    public void onLoadMoreSuccess(List<ZhihuDailyItem> data, Object... date) {
-        mDate = (String) date[0];
+    public void onLoadMoreSuccess(List data, Object... extra) {
+        mDate = (String) extra[0];
         mAdapter.setDataAfterLoadMore(data);
         mSwipeToLoadLayout.setLoadingMore(false);
     }
+
 
     @Override
     public void onLoadMoreFailed() {

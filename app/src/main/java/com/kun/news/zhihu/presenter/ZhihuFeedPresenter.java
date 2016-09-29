@@ -5,6 +5,7 @@ import com.kun.news.common.presenter.BaseListPresenter;
 import com.kun.news.http.api.ZhihuApi;
 import com.kun.news.http.bean.zhihu.ZhihuDaily;
 import com.kun.news.http.bean.zhihu.ZhihuDailyItem;
+import com.kun.news.http.bean.zhihu.ZhihuHot;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,12 +15,16 @@ import retrofit2.Response;
  * Created by jiangkun on 16/9/25.
  */
 
-public class FeedPresenter extends BaseListPresenter<ZhihuDailyItem> {
+public class ZhihuFeedPresenter extends BaseListPresenter<ZhihuDailyItem> {
     private ZhihuApi mZhihuApi;
 
     @Override
     public void refreshData(Object... params) {
-        mZhihuApi = getRetrofit(Constant.ZHIHU_URL).create(ZhihuApi.class);
+        if (mZhihuApi == null) {
+            synchronized (ZhihuFeedPresenter.this) {
+                mZhihuApi = (ZhihuApi) getApiService(Constant.ZHIHU_URL, ZhihuApi.class);
+            }
+        }
         Call<ZhihuDaily> call = mZhihuApi.getLastDaily();
         call.enqueue(new Callback<ZhihuDaily>() {
             @Override
@@ -41,12 +46,17 @@ public class FeedPresenter extends BaseListPresenter<ZhihuDailyItem> {
                     mView.onRefreshFailed();
             }
         });
+
     }
 
     @Override
     public void loadMoreData(Object... params) {
         if (params.length <= 0) return;
-        mZhihuApi = getRetrofit(Constant.ZHIHU_URL).create(ZhihuApi.class);
+        if (mZhihuApi == null) {
+            synchronized (ZhihuFeedPresenter.this) {
+                mZhihuApi = (ZhihuApi) getApiService(Constant.ZHIHU_URL, ZhihuApi.class);
+            }
+        }
         Call<ZhihuDaily> call = mZhihuApi.getTheDaily((String) params[0]);
         call.enqueue(new Callback<ZhihuDaily>() {
             @Override

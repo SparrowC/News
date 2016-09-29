@@ -33,5 +33,7 @@
     <color name="nev_item">#ffffffff</color>
     <color name="background_light">#fafafa</color>
     <color name="s10">#E9FFFFFF</color>
+    <color name="bg_tab">#333333</color>
+    <color name="text_black">#222222</color>
 
 </resources>

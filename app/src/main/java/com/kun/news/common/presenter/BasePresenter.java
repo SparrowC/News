@@ -20,8 +20,13 @@ public abstract class BasePresenter<D, V extends IBaseView> {
     }
 
     public abstract void refreshData(Object... params);
+    public void loadMoreData(Object... params){}
 
-    public Retrofit getRetrofit(String url) {
+    protected Object getApiService(String url, Class clz) {
+        return getRetrofit(url).create(clz);
+    }
+
+    protected Retrofit getRetrofit(String url) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())

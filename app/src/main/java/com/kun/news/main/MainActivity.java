@@ -13,10 +13,11 @@ import com.kun.news.R;
 import com.kun.news.common.activty.BaseActivity;
 import com.kun.news.common.fragment.AbsFragment;
 import com.kun.news.common.utils.UIUtils;
+import com.kun.news.common.widget.NoScrollViewPager;
 import com.kun.news.meizhi.MeiZiFragment;
 import com.kun.news.neteasy.NetEasyFragment;
-import com.kun.news.zhihu.ZhiHuFragment;
 import com.kun.news.zhihu.event.ScrollEvent;
+import com.kun.news.zhihu.ui.ZhihuFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -31,7 +32,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     @Bind(R.id.view_pager)
-    ViewPager mViewPager;
+    NoScrollViewPager mViewPager;
 
     @Bind(R.id.net_easy_tab)
     ImageView mNetEasyTab;
@@ -79,12 +80,11 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     private void initTab() {
         List<AbsFragment> fragments = new ArrayList<>();
-        fragments.add(new ZhiHuFragment());
+        fragments.add(new ZhihuFragment());
         fragments.add(new NetEasyFragment());
         fragments.add(new MeiZiFragment());
-        mViewPager.setAdapter(new MainFragmentAdapter(getSupportFragmentManager(), fragments));
+        mViewPager.setAdapter(new VPFragmentAdapter(getSupportFragmentManager(), fragments));
         mViewPager.addOnPageChangeListener(this);
-
         mViewPager.setCurrentItem(0);
         onPageSelected(0);
     }

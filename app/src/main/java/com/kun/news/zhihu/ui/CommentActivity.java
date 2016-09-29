@@ -75,21 +75,23 @@ public class CommentActivity extends SlideActivity implements OnLoadMoreListener
 
 
     @OnClick(R.id.back_btn)
-    public void onBack(View view){
+    public void onBack(View view) {
         onBackPressed();
     }
+
     @Override
     public void onLoadMore() {
         mPresenter.loadMoreData(mNewsId);
     }
-
 
     @Override
     public void onRefreshSuccess(List data, Object... extra) {
         mAdapter.setData(data);
         mSwipeToLoadLayout.setRefreshing(false);
         mSwipeToLoadLayout.setRefreshEnabled(false);
-        mSwipeToLoadLayout.setLoadMoreEnabled(false);
+        if (data == null || data.isEmpty()) {
+            onLoadMore();
+        }
     }
 
     @Override

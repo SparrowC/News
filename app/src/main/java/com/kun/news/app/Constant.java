@@ -12,4 +12,7 @@ public interface Constant {
     String EXTRA_NEWS_ID = "news_id";
 
     String EXTRA_COMMENT_ID = "comment_id";
+    String EXTRA_ZHIHU_TYPE = "type";
+    int HOT = 1;
+    int NEWS = 2;
 }

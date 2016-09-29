@@ -4,25 +4,53 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-
-    <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
-        android:id="@+id/swipe_to_load_layout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <com.kun.news.common.widget.RefreshHeaderView
-            android:id="@id/swipe_refresh_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/hot_tab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="hot"
+            android:textColor="@color/text_black"
+            android:textSize="18dp"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@id/swipe_target"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/news_tab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="news"
+            android:textColor="@color/text_black"
+            android:textSize="18dp"/>
+    </LinearLayout>
 
-        <com.kun.news.common.widget.LoadMoreFooterView
-            android:id="@id/swipe_load_more_footer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/red_line_1"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="@color/material_red"/>
+
+        <View
+            android:id="@+id/red_line_2"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            android:background="@color/material_red"/>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

@@ -7,5 +7,5 @@ import com.kun.news.http.bean.zhihu.ZhihuDailyItem;
  * Created by jiangkun on 16/9/25.
  */
 
-public interface FeedView extends IBaseListView<ZhihuDailyItem> {
+public interface FeedView extends IBaseListView {
 }

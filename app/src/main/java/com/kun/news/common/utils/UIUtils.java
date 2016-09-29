@@ -53,7 +53,15 @@ public class UIUtils {
         return (dm == null) ? 0 : dm.heightPixels;
     }
 
+    public final static int getScreenWidth(Context context) {
+        if (context == null) {
+            return 0;
+        }
 
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+
+        return (dm == null) ? 0 : dm.widthPixels;
+    }
 
     public static int getDiggBuryWidth(Context context) {
         int screenWidth = context.getResources().getDisplayMetrics().widthPixels;

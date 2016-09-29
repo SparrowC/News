@@ -3,6 +3,7 @@ package com.kun.news.http.api;
 
 import com.kun.news.http.bean.zhihu.ZhihuComments;
 import com.kun.news.http.bean.zhihu.ZhihuDaily;
+import com.kun.news.http.bean.zhihu.ZhihuHot;
 import com.kun.news.http.bean.zhihu.ZhihuStory;
 import com.kun.news.http.bean.zhihu.ZhihuStoryExtra;
 
@@ -16,6 +17,9 @@ public interface ZhihuApi {
     //get today's news
     @GET("/api/4/news/latest")
     Call<ZhihuDaily> getLastDaily();
+
+    @GET("/api/4/news/hot")
+    Call<ZhihuHot> getHot();
 
     //get news on date
     @GET("/api/4/news/before/{date}")
