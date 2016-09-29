@@ -6,14 +6,9 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.kun.news.R;
 import com.kun.news.common.adapter.BaseViewHolder;
-import com.kun.news.http.bean.zhihu.ZhihuComments;
+import com.kun.news.zhihu.model.ZhihuComments;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by jiangkun on 16/9/26.

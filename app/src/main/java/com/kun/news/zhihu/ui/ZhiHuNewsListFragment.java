@@ -14,7 +14,6 @@ import com.kun.news.app.Constant;
 import com.kun.news.common.adapter.BaseAdapter;
 import com.kun.news.common.fragment.AbsFragment;
 import com.kun.news.common.presenter.BasePresenter;
-import com.kun.news.http.bean.zhihu.ZhihuDailyItem;
 import com.kun.news.zhihu.adapter.FeedAdapter;
 import com.kun.news.zhihu.adapter.HotFeedAdapter;
 import com.kun.news.zhihu.event.ScrollEvent;

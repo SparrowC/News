@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import com.kun.news.R;
 import com.kun.news.common.adapter.BaseAdapter;
-import com.kun.news.http.bean.zhihu.ZhihuComments;
+import com.kun.news.zhihu.model.ZhihuComments;
 
 /**
  * Created by jiangkun on 16/9/26.

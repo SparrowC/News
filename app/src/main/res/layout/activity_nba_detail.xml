@@ -34,8 +34,9 @@
                     android:id="@+id/nba_detail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="2dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="2dp"
+                    android:paddingBottom="20dp"
                     android:background="@color/nev_item"
                     android:textSize="20dp"/>
 

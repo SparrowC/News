@@ -2,7 +2,6 @@ package com.kun.news.zhihu.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,7 +12,7 @@ import com.kun.news.R;
 import com.kun.news.app.Constant;
 import com.kun.news.common.adapter.BaseViewHolder;
 import com.kun.news.common.utils.UIUtils;
-import com.kun.news.http.bean.zhihu.ZhihuDailyItem;
+import com.kun.news.zhihu.model.ZhihuDailyItem;
 import com.kun.news.zhihu.ui.NewsDetailActivity;
 
 /**

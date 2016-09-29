@@ -12,8 +12,7 @@ import com.kun.news.R;
 import com.kun.news.app.Constant;
 import com.kun.news.common.adapter.BaseViewHolder;
 import com.kun.news.common.utils.UIUtils;
-import com.kun.news.http.bean.zhihu.ZhihuDailyItem;
-import com.kun.news.http.bean.zhihu.ZhihuHot;
+import com.kun.news.zhihu.model.ZhihuHot;
 import com.kun.news.zhihu.ui.NewsDetailActivity;
 
 /**

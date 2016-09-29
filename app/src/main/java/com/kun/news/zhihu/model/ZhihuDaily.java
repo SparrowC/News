@@ -1,12 +1,9 @@
-package com.kun.news.http.bean.zhihu;
+package com.kun.news.zhihu.model;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-/**
- * Created by 蔡小木 on 2016/3/6 0006.
- */
 public class ZhihuDaily{
     @SerializedName("date")
     private String date;

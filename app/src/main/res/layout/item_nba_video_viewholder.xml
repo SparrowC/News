@@ -72,12 +72,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:lineSpacingExtra="4dp"/>
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/image"
+            <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+                android:id="@+id/video"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                news:actualImageScaleType="fitXY"
-                news:placeholderImage="@mipmap/nba_logo"/>
+                android:layout_height="250dp"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </FrameLayout>

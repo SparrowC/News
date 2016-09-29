@@ -46,7 +46,9 @@ dependencies {
     //SimpleDraweeView
     compile 'com.facebook.fresco:fresco:0.12.0'
     compile 'org.greenrobot:eventbus:3.0.0'
-
     //Design Support Library
     compile 'com.android.support:design:24.2.1'
+    //video player
+    compile 'fm.jiecao:jiecaovideoplayer:4.7.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

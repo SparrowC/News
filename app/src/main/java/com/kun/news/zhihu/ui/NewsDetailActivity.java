@@ -13,8 +13,8 @@ import com.kun.news.app.Constant;
 import com.kun.news.common.activty.SlideActivity;
 import com.kun.news.common.utils.UIUtils;
 import com.kun.news.common.utils.WebUtil;
-import com.kun.news.http.bean.zhihu.ZhihuStory;
-import com.kun.news.http.bean.zhihu.ZhihuStoryExtra;
+import com.kun.news.zhihu.model.ZhihuStory;
+import com.kun.news.zhihu.model.ZhihuStoryExtra;
 import com.kun.news.zhihu.presenter.DetailPresenter;
 import com.kun.news.zhihu.presenter.DetailView;
 

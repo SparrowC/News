@@ -1,8 +1,8 @@
 package com.kun.news.zhihu.presenter;
 
 import com.kun.news.common.presenter.IBaseView;
-import com.kun.news.http.bean.zhihu.ZhihuStory;
-import com.kun.news.http.bean.zhihu.ZhihuStoryExtra;
+import com.kun.news.zhihu.model.ZhihuStory;
+import com.kun.news.zhihu.model.ZhihuStoryExtra;
 
 /**
  * Created by jiangkun on 16/9/25.

@@ -4,23 +4,15 @@ package com.kun.news.nba.ui;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.kun.news.R;
 import com.kun.news.app.Constant;
 import com.kun.news.common.activty.SlideActivity;
-import com.kun.news.common.utils.UIUtils;
-import com.kun.news.common.utils.WebUtil;
-import com.kun.news.http.bean.zhihu.ZhihuStory;
-import com.kun.news.http.bean.zhihu.ZhihuStoryExtra;
 import com.kun.news.nba.model.NewsDetail;
 import com.kun.news.nba.presenter.NbaDetailPresenter;
 import com.kun.news.nba.presenter.NbaDetailView;
-import com.kun.news.zhihu.presenter.DetailPresenter;
-import com.kun.news.zhihu.presenter.DetailView;
-import com.kun.news.zhihu.ui.CommentActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

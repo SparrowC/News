@@ -3,15 +3,11 @@ package com.kun.news.zhihu.presenter;
 import com.kun.news.app.Constant;
 import com.kun.news.common.presenter.BaseListPresenter;
 import com.kun.news.http.api.ZhihuApi;
-import com.kun.news.http.bean.zhihu.ZhihuDaily;
-import com.kun.news.http.bean.zhihu.ZhihuDailyItem;
-import com.kun.news.http.bean.zhihu.ZhihuHot;
+import com.kun.news.zhihu.model.ZhihuHot;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.kun.news.R.id.date;
 
 /**
  * Created by jiangkun on 16/9/25.

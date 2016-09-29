@@ -1,4 +1,4 @@
-package com.kun.news.http.bean.zhihu;
+package com.kun.news.zhihu.model;
 
 import com.google.gson.annotations.SerializedName;
 

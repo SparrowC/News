@@ -1,10 +1,7 @@
-package com.kun.news.http.bean.zhihu;
+package com.kun.news.zhihu.model;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by 蔡小木 on 2016/3/6 0006.
- */
 public class ZhihuDailyItem{
     @SerializedName("images")
     private String[] images;

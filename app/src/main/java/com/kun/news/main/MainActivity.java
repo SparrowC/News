@@ -14,7 +14,6 @@ import com.kun.news.common.activty.BaseActivity;
 import com.kun.news.common.fragment.AbsFragment;
 import com.kun.news.common.utils.UIUtils;
 import com.kun.news.common.widget.NoScrollViewPager;
-import com.kun.news.meizhi.MeiZiFragment;
 import com.kun.news.nba.ui.NbaFragment;
 import com.kun.news.zhihu.event.ScrollEvent;
 import com.kun.news.zhihu.ui.ZhihuFragment;
@@ -82,7 +81,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         List<AbsFragment> fragments = new ArrayList<>();
         fragments.add(new ZhihuFragment());
         fragments.add(new NbaFragment());
-        fragments.add(new MeiZiFragment());
+        fragments.add(new NbaFragment());
         mViewPager.setAdapter(new VPFragmentAdapter(getSupportFragmentManager(), fragments));
         mViewPager.addOnPageChangeListener(this);
         mViewPager.setCurrentItem(0);

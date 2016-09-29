@@ -1,11 +1,11 @@
 package com.kun.news.http.api;
 
 
-import com.kun.news.http.bean.zhihu.ZhihuComments;
-import com.kun.news.http.bean.zhihu.ZhihuDaily;
-import com.kun.news.http.bean.zhihu.ZhihuHot;
-import com.kun.news.http.bean.zhihu.ZhihuStory;
-import com.kun.news.http.bean.zhihu.ZhihuStoryExtra;
+import com.kun.news.zhihu.model.ZhihuComments;
+import com.kun.news.zhihu.model.ZhihuDaily;
+import com.kun.news.zhihu.model.ZhihuHot;
+import com.kun.news.zhihu.model.ZhihuStory;
+import com.kun.news.zhihu.model.ZhihuStoryExtra;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
