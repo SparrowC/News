@@ -24,16 +24,14 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    compile project(':CommonLibrary')
     //    rotrofit
     compile 'com.squareup.retrofit2:retrofit:+'
     compile 'com.squareup.retrofit2:converter-gson:+'
     compile 'com.squareup.retrofit2:adapter-rxjava:+'
     compile 'com.google.code.gson:gson:+'
     compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-scalars:2.0.0-beta4'
     compile 'com.google.code.gson:gson:2.7'

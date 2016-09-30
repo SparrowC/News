@@ -12,6 +12,7 @@ import com.kun.news.R;
 import com.kun.news.app.Constant;
 import com.kun.news.common.adapter.BaseViewHolder;
 import com.kun.news.http.api.tencent.TencentVideoApi;
+import com.kun.news.http.okhttp.OkHttpHelper;
 import com.kun.news.nba.model.NewsItem;
 import com.kun.news.nba.model.PullRealUrlParser;
 import com.kun.news.nba.model.VideoRealUrl;
@@ -20,7 +21,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayInputStream;
 
-import fm.jiecao.jcvideoplayer_lib.JCUtils;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,6 +57,12 @@ public class FeedVideoViewHolder extends BaseViewHolder<NewsItem.NewsItemBean> {
                 mContext.startActivity(intent);
             }
         });
+        mVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
@@ -65,9 +72,11 @@ public class FeedVideoViewHolder extends BaseViewHolder<NewsItem.NewsItemBean> {
         Picasso.with(mContext)
                 .load(data.imgurl)
                 .into(mVideo.thumbImageView);
-        if(TextUtils.isEmpty(data.realUrl)){
+
+        if (TextUtils.isEmpty(data.realUrl)) {
+            mVideo.setUp("", JCVideoPlayer.SCREEN_LAYOUT_LIST, data.title);
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(Constant.TENCENT_SERVER)
+                    .baseUrl(Constant.TENCENT_VIDEO_SERVER)
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .build();
             TencentVideoApi api = retrofit.create(TencentVideoApi.class);
@@ -95,8 +104,9 @@ public class FeedVideoViewHolder extends BaseViewHolder<NewsItem.NewsItemBean> {
 
                 }
             });
-        }else
+        } else
             mVideo.setUp(mData.realUrl, JCVideoPlayerStandard.SCREEN_LAYOUT_LIST, data.title);
+
         mTitle.setText(data.title);
         mTime.setText(data.pub_time);
         mDigest.setText(data.abstractX);

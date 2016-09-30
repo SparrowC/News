@@ -18,16 +18,17 @@ public class NbaFeedIndexPresenter extends BasePresenter<NewsIndex, NbaFeedIndex
 
     @Override
     public void refreshData(Object... params) {
+        if (params.length < 1) return;
         mTencentApi = (TencentApi) getApiService(Constant.TENCENT_SERVER, TencentApi.class);
-        Call<NewsIndex> call=mTencentApi.getNewsIndex("news");
+        Call<NewsIndex> call = mTencentApi.getNewsIndex((String) params[0]);
         call.enqueue(new Callback<NewsIndex>() {
             @Override
             public void onResponse(Call<NewsIndex> call, Response<NewsIndex> response) {
-                if(response.isSuccessful()){
-                    NewsIndex newsIndex=response.body();
-                    if(newsIndex!=null){
-                        mData=newsIndex;
-                        if(mView!=null){
+                if (response.isSuccessful()) {
+                    NewsIndex newsIndex = response.body();
+                    if (newsIndex != null) {
+                        mData = newsIndex;
+                        if (mView != null) {
                             mView.onLoadSuccess(mData);
                         }
                     }

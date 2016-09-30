@@ -80,8 +80,8 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private void initTab() {
         List<AbsFragment> fragments = new ArrayList<>();
         fragments.add(new ZhihuFragment());
-        fragments.add(new NbaFragment());
-        fragments.add(new NbaFragment());
+        fragments.add(NbaFragment.getInstance("news"));
+        fragments.add(NbaFragment.getInstance("videos"));
         mViewPager.setAdapter(new VPFragmentAdapter(getSupportFragmentManager(), fragments));
         mViewPager.addOnPageChangeListener(this);
         mViewPager.setCurrentItem(0);

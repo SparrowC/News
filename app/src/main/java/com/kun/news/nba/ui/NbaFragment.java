@@ -1,14 +1,17 @@
 package com.kun.news.nba.ui;
 
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.kun.news.R;
+import com.kun.news.app.Constant;
 import com.kun.news.common.fragment.AbsFragment;
 import com.kun.news.common.presenter.IBaseListView;
 import com.kun.news.common.utils.UIUtils;
@@ -36,6 +39,15 @@ public class NbaFragment extends AbsFragment implements IBaseListView, NbaFeedIn
     private List<NewsIndex.IndexBean> mIndexBeen;
     int start = 0;
     final int count = 10;
+    private String mType;
+
+    public static NbaFragment getInstance(String type) {
+        Bundle bundle = new Bundle();
+        bundle.putString(Constant.EXTRA_NBA_TYPE, type);
+        NbaFragment fragment = new NbaFragment();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     protected void initData() {
@@ -69,8 +81,17 @@ public class NbaFragment extends AbsFragment implements IBaseListView, NbaFeedIn
 
     @Override
     protected void initView(View root) {
+        initArguments();
         mSwipeToLoadLayout = (SwipeToLoadLayout) root.findViewById(R.id.swipe_to_load_layout);
         mListView = (RecyclerView) root.findViewById(R.id.swipe_target);
+    }
+
+    private void initArguments() {
+        Bundle bundle = getArguments();
+        mType = bundle.getString(Constant.EXTRA_NBA_TYPE);
+        if (TextUtils.isEmpty(mType)) {
+            UIUtils.displayToast(getActivity(), "类型错误");
+        }
     }
 
     @Override
@@ -106,7 +127,7 @@ public class NbaFragment extends AbsFragment implements IBaseListView, NbaFeedIn
     public void onLoadSuccess(NewsIndex newsIndex) {
         mIndexBeen = newsIndex.data;
         String ids = getIds();
-        mPresenter.refreshData(ids, false);
+        mPresenter.refreshData(ids, mType);
     }
 
     private String getIds() {
@@ -128,11 +149,11 @@ public class NbaFragment extends AbsFragment implements IBaseListView, NbaFeedIn
 
     @Override
     public void onRefresh() {
-        mIndexPresenter.refreshData();
+        mIndexPresenter.refreshData(mType);
     }
 
     @Override
     public void onLoadMore() {
-        mPresenter.loadMoreData(getIds(), false);
+        mPresenter.loadMoreData(getIds(), mType);
     }
 }

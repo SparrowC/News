@@ -33,12 +33,12 @@ public class NbaFeedPresenter extends BaseListPresenter<NewsItem.NewsItemBean> {
     }
 
     /**
-     * @param params 1 articleIds    2 isRefresh
+     * @param params 1 articleIds    2 type
      */
     @Override
     public void refreshData(Object... params) {
         if (params.length < 2) return;
-        Call<String> call = mTencentApi.getNewsItem("news", (String) params[0]);
+        Call<String> call = mTencentApi.getNewsItem((String) params[1], (String) params[0]);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -64,7 +64,7 @@ public class NbaFeedPresenter extends BaseListPresenter<NewsItem.NewsItemBean> {
     @Override
     public void loadMoreData(Object... params) {
         if (params.length < 2) return;
-        Call<String> call = mTencentApi.getNewsItem("news", (String) params[0]);
+        Call<String> call = mTencentApi.getNewsItem((String) params[1], (String) params[0]);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
