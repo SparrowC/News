@@ -1,5 +1,6 @@
 package com.kun.news.main;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -100,7 +101,9 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
                 mViewPager.setCurrentItem(0);
                 break;
             case R.id.main_fab:
-                UIUtils.displayToast(this, "fab");
+//                UIUtils.displayToast(this, "fab");
+                Intent intent =new Intent(this,AboutMeActivity.class);
+                startActivity(intent);
                 break;
         }
     }

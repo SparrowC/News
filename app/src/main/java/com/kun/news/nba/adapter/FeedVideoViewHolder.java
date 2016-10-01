@@ -74,7 +74,7 @@ public class FeedVideoViewHolder extends BaseViewHolder<NewsItem.NewsItemBean> {
                 .into(mVideo.thumbImageView);
 
         if (TextUtils.isEmpty(data.realUrl)) {
-            mVideo.setUp("", JCVideoPlayer.SCREEN_LAYOUT_LIST, data.title);
+//            mVideo.setUp("", JCVideoPlayer.SCREEN_LAYOUT_LIST, data.title);
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Constant.TENCENT_VIDEO_SERVER)
                     .addConverterFactory(ScalarsConverterFactory.create())

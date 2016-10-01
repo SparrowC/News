@@ -14,7 +14,7 @@
         news:contentPadding="4dp"
         news:cardCornerRadius="2dp"
         news:cardBackgroundColor="#99FFFFFF"
-        news:cardElevation="2dp">
+        news:cardElevation="4dp">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

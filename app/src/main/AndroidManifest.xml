@@ -21,6 +21,7 @@
         <activity android:name=".zhihu.ui.NewsDetailActivity"/>
         <activity android:name=".zhihu.ui.CommentActivity"/>
         <activity android:name=".nba.ui.NewsDetailActivity"/>
+        <activity android:name=".main.AboutMeActivity"/>
     </application>
 
 </manifest>
