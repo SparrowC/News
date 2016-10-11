@@ -18,10 +18,5 @@
     <string name="about" translatable="false">关于</string>
 
     <string name="person_name">Vonnie</string>
-    <string name="person_intro">
-        This project has updated on github, welcome to Star and Fork.
-        I'd like to communicate android development with you all.
-        About me: I am a Senior student. Now, I worked as an intern in an company.
-                                \n github: https://github.com/SparrowC
-                                \n email: vonnie.jade@gmail.com</string>
+
 </resources>
