@@ -18,5 +18,8 @@
     <string name="about" translatable="false">关于</string>
 
     <string name="person_name">Vonnie</string>
+    <string name="zhihu">知乎日报</string>
+    <string name="nba_news">NBA新闻</string>
+    <string name="nba_video">NBA视频</string>
 
 </resources>

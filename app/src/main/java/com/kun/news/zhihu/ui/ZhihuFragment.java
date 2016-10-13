@@ -3,6 +3,7 @@ package com.kun.news.zhihu.ui;
 import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.kun.news.R;
@@ -13,6 +14,8 @@ import com.kun.news.main.VPFragmentAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.Bind;
 
 
 /**

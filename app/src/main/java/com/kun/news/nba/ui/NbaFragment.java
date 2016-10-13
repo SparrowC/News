@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
@@ -26,6 +27,8 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
+import butterknife.Bind;
+
 /**
  * Created by jiangkun on 16/9/24.
  */
@@ -33,6 +36,10 @@ import java.util.List;
 public class NbaFragment extends AbsFragment implements IBaseListView, NbaFeedIndexView, OnRefreshListener, OnLoadMoreListener {
     SwipeToLoadLayout mSwipeToLoadLayout;
     RecyclerView mListView;
+
+    @Bind(R.id.progress)
+    ProgressBar mProgressBar;
+
     private NbaFeedPresenter mPresenter;
     private NbaFeedAdapter mFeedAdapter;
     private NbaFeedIndexPresenter mIndexPresenter;
@@ -76,6 +83,7 @@ public class NbaFragment extends AbsFragment implements IBaseListView, NbaFeedIn
 
         mSwipeToLoadLayout.setOnRefreshListener(this);
         mSwipeToLoadLayout.setOnLoadMoreListener(this);
+        mProgressBar.setVisibility(View.VISIBLE);
         onRefresh();
     }
 
@@ -101,6 +109,7 @@ public class NbaFragment extends AbsFragment implements IBaseListView, NbaFeedIn
 
     @Override
     public void onRefreshSuccess(List data, Object... extra) {
+        mProgressBar.setVisibility(View.GONE);
         mFeedAdapter.setData(data);
         mSwipeToLoadLayout.setRefreshing(false);
     }
@@ -123,6 +132,7 @@ public class NbaFragment extends AbsFragment implements IBaseListView, NbaFeedIn
         UIUtils.displayToast(getActivity(), "加载失败!");
     }
 
+    //加载NBA index
     @Override
     public void onLoadSuccess(NewsIndex newsIndex) {
         mIndexBeen = newsIndex.data;
