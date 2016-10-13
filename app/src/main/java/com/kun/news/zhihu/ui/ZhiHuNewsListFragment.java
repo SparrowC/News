@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
@@ -25,6 +26,8 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
+import butterknife.Bind;
+
 
 /**
  * Created by jiangkun on 16/9/24.
@@ -38,6 +41,8 @@ public class ZhiHuNewsListFragment extends AbsFragment implements OnRefreshListe
     private BasePresenter mPresenter;
     private String mDate;
     private int mType;
+    @Bind(R.id.progress)
+    ProgressBar mProgressBar;
 
     public static ZhiHuNewsListFragment newInstance(int type) {
         Bundle bundle = new Bundle();
@@ -65,6 +70,7 @@ public class ZhiHuNewsListFragment extends AbsFragment implements OnRefreshListe
         mListView.setOverScrollMode(View.OVER_SCROLL_ALWAYS);
         mListView.setAdapter(mAdapter);
 
+        mProgressBar.setVisibility(View.VISIBLE);
         onRefresh();
         mListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -122,6 +128,7 @@ public class ZhiHuNewsListFragment extends AbsFragment implements OnRefreshListe
 
     @Override
     public void onRefreshSuccess(List data, Object... extra) {
+        mProgressBar.setVisibility(View.GONE);
         if (extra.length <= 0) {
             mSwipeToLoadLayout.setLoadMoreEnabled(false);
         } else {

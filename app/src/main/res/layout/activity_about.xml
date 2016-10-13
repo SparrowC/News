@@ -103,6 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
                 android:text="@string/person_name"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"

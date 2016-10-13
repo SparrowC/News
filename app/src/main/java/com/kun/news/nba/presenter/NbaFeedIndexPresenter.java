@@ -26,10 +26,14 @@ public class NbaFeedIndexPresenter extends BasePresenter<NewsIndex, NbaFeedIndex
             public void onResponse(Call<NewsIndex> call, Response<NewsIndex> response) {
                 if (response.isSuccessful()) {
                     NewsIndex newsIndex = response.body();
-                    if (newsIndex != null) {
+                    if (newsIndex != null && newsIndex.data != null) {
                         mData = newsIndex;
                         if (mView != null) {
                             mView.onLoadSuccess(mData);
+                        }
+                    }else {
+                        if(mView!=null){
+                            mView.onLoadFailed();
                         }
                     }
                 }
