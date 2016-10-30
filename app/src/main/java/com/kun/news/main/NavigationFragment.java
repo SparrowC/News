@@ -65,6 +65,7 @@ public class NavigationFragment extends AbsFragment {
         mFragmentManager = manager;
         mNavTabReselectListener = listener;
         mCurNavBtn = mNavZixun;
+        mNavZixun.setSelected(true);
         doSelect(null, mNavZixun);
     }
 
