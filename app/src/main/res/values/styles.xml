@@ -23,4 +23,9 @@
 
         <item name="android:actionMenuTextColor">@android:color/white</item>
     </style>
+
+    <style name="Theme.Splash" parent="android:Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@mipmap/nba_logo</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>
