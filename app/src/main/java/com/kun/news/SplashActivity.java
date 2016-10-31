@@ -29,10 +29,4 @@ public class SplashActivity extends Activity {
             }
         }, 800);
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
 }

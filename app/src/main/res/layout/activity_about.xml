@@ -62,20 +62,22 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             app:cardElevation="8dp"
             app:contentPadding="16dp">
 
-            <TextView
+            <com.kun.news.common.widget.ShowMoreTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="35dp"
-                android:lineSpacingExtra="8dp"
-                android:text="This project has updated on github, welcome to Star and Fork.I'd like to communicate android development with you all.\nAbout me: I am a Senior student. Now, I worked as an intern in an company.
-                 github: https://github.com/SparrowC
-                 email: vonnie.jade@gmail.com"/>
+                app:maxLine="2"
+                app:textSize="6sp"
+                app:textColor="#333333"
+                app:text="This project has updated on github, welcome to Star and Fork.I'd like to communicate android development with you all.\nAbout me: I am a Senior student. Now, I worked as an intern in an company.
+                 \ngithub: https://github.com/SparrowC
+                 \nemail: vonnie.jade@gmail.com"/>
 
         </android.support.v7.widget.CardView>
     </android.support.v4.widget.NestedScrollView>

@@ -19,7 +19,6 @@ import org.greenrobot.eventbus.Subscribe;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-
 public class MainActivity extends BaseActivity implements  View.OnClickListener {
 
     NavigationFragment mNavTab;
