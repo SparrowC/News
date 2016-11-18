@@ -10,7 +10,7 @@ import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.kun.news.R;
 import com.kun.news.app.Constant;
-import com.kun.news.common.activty.SlideActivity;
+import com.kun.news.base.ui.SlideActivity;
 import com.kun.news.common.presenter.IBaseListView;
 import com.kun.news.zhihu.adapter.CommentAdapter;
 import com.kun.news.zhihu.presenter.CommentPresenter;

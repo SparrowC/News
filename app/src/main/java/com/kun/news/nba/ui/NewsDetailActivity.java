@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.kun.news.R;
 import com.kun.news.app.Constant;
-import com.kun.news.common.activty.SlideActivity;
+import com.kun.news.base.ui.SlideActivity;
 import com.kun.news.nba.model.NewsDetail;
 import com.kun.news.nba.presenter.NbaDetailPresenter;
 import com.kun.news.nba.presenter.NbaDetailView;

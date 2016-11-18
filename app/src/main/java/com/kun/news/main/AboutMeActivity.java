@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kun.news.R;
-import com.kun.news.common.activty.SlideActivity;
+import com.kun.news.base.ui.SlideActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
