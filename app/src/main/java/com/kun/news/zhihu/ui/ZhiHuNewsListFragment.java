@@ -18,8 +18,8 @@ import com.kun.news.common.presenter.BasePresenter;
 import com.kun.news.zhihu.adapter.FeedAdapter;
 import com.kun.news.zhihu.adapter.HotFeedAdapter;
 import com.kun.news.zhihu.event.ScrollEvent;
-import com.kun.news.zhihu.presenter.ZhihuFeedPresenter;
 import com.kun.news.zhihu.presenter.FeedView;
+import com.kun.news.zhihu.presenter.ZhihuFeedPresenter;
 import com.kun.news.zhihu.presenter.ZhihuHotFeedPresenter;
 
 import org.greenrobot.eventbus.EventBus;

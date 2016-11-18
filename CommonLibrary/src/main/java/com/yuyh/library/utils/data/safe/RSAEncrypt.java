@@ -29,8 +29,8 @@ import javax.crypto.NoSuchPaddingException;
  */
 public class RSAEncrypt {
 
-    public static final String KEY_ALGORTHM="RSA";
-    public static final String SIGNATURE_ALGORITHM="MD5withRSA";
+    public static final String KEY_ALGORTHM = "RSA";
+    public static final String SIGNATURE_ALGORITHM = "MD5withRSA";
 
     /**
      * 字节数据转字符串专用集合
@@ -48,10 +48,10 @@ public class RSAEncrypt {
      */
     private RSAPublicKey publicKey;
 
-    public RSAEncrypt(){
+    public RSAEncrypt() {
     }
 
-    public RSAEncrypt(String publicKey){
+    public RSAEncrypt(String publicKey) {
         try {
             loadPublicKey(publicKey);
         } catch (Exception e) {
@@ -62,7 +62,6 @@ public class RSAEncrypt {
      * 从文件中输入流中加载公钥
      *
      * @param in 公钥输入流
-     *
      * @throws Exception 加载公钥时产生的异常
      */
     public void loadPublicKey(InputStream in) throws Exception {
@@ -91,15 +90,14 @@ public class RSAEncrypt {
      * 从字符串中加载公钥
      *
      * @param publicKeyStr 公钥数据字符串
-     *
      * @throws Exception 加载公钥时产生的异常
      */
     public void loadPublicKey(String publicKeyStr) throws Exception {
         try {
-            byte[] buffer               = Base64.decode(publicKeyStr, Base64.DEFAULT);
-            KeyFactory keyFactory       = KeyFactory.getInstance("RSA");
-            X509EncodedKeySpec keySpec  = new X509EncodedKeySpec(buffer);
-            publicKey                   = (RSAPublicKey) keyFactory.generatePublic(keySpec);
+            byte[] buffer = Base64.decode(publicKeyStr, Base64.DEFAULT);
+            KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+            X509EncodedKeySpec keySpec = new X509EncodedKeySpec(buffer);
+            publicKey = (RSAPublicKey) keyFactory.generatePublic(keySpec);
         } catch (NoSuchAlgorithmException e) {
             throw new Exception("无此算法");
         } catch (InvalidKeySpecException e) {
@@ -115,16 +113,14 @@ public class RSAEncrypt {
      * 从文件中加载私钥
      *
      * @param in 私钥文件名
-     *
      * @return 是否成功
-     *
      * @throws Exception
      */
     public void loadPrivateKey(InputStream in) throws Exception {
         try {
-            BufferedReader br   = new BufferedReader(new InputStreamReader(in));
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
             String readLine;
-            StringBuilder sb    = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             while ((readLine = br.readLine()) != null) {
                 if (readLine.charAt(0) == '-') {
                     continue;
@@ -143,10 +139,10 @@ public class RSAEncrypt {
 
     public void loadPrivateKey(String privateKeyStr) throws Exception {
         try {
-            byte[] buffer               = Base64.decode(privateKeyStr, Base64.DEFAULT);
+            byte[] buffer = Base64.decode(privateKeyStr, Base64.DEFAULT);
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(buffer);
-            KeyFactory keyFactory       = KeyFactory.getInstance("RSA");
-            privateKey                  = (RSAPrivateKey) keyFactory.generatePrivate(keySpec);
+            KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+            privateKey = (RSAPrivateKey) keyFactory.generatePrivate(keySpec);
         } catch (NoSuchAlgorithmException e) {
             throw new Exception("无此算法");
         } catch (InvalidKeySpecException e) {
@@ -161,14 +157,13 @@ public class RSAEncrypt {
      * 数据加密方法
      *
      * @param sourceData 明文数据
-     *
      * @return 加密后的数据
      */
     public String encrypt(byte[] sourceData) {
         String result = "";
         try {
-            byte[] cipher   = encrypt(publicKey, sourceData);
-            result          = byte2HexStr(cipher);
+            byte[] cipher = encrypt(publicKey, sourceData);
+            result = byte2HexStr(cipher);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -179,8 +174,7 @@ public class RSAEncrypt {
      * 解密方法
      *
      * @param privateKey 私钥
-     * @param cipherData  加密数据
-     *
+     * @param cipherData 加密数据
      * @return 解密后的明文数据
      */
     public String decrypt(String privateKey, byte[] cipherData) {
@@ -190,9 +184,9 @@ public class RSAEncrypt {
                 privateKey_Str = privateKey;
                 loadPrivateKey(privateKey);
             }
-            byte[] cipher       = hex2byte(cipherData);
-            byte[] content      = decrypt(this.privateKey, cipher);
-            result              = new String(content);
+            byte[] cipher = hex2byte(cipherData);
+            byte[] content = decrypt(this.privateKey, cipher);
+            result = new String(content);
 //            result          = byte2HexStr(decryKey);
         } catch (Exception e) {
             e.printStackTrace();
@@ -203,16 +197,15 @@ public class RSAEncrypt {
     /**
      * 解密方法
      *
-     * @param cipherData  加密数据
-     *
+     * @param cipherData 加密数据
      * @return 解密后的明文数据
      */
-    public String decrypt(byte[] cipherData){
+    public String decrypt(byte[] cipherData) {
         String result = "";
         try {
-            byte[] cipher   = hex2byte(cipherData);
-            byte[] content      = decrypt(privateKey, cipher);
-            result              = new String(content);
+            byte[] cipher = hex2byte(cipherData);
+            byte[] content = decrypt(privateKey, cipher);
+            result = new String(content);
 //            result          = byte2HexStr(decryKey);
         } catch (Exception e) {
             e.printStackTrace();
@@ -223,11 +216,9 @@ public class RSAEncrypt {
     /**
      * 加密过程
      *
-     * @param publicKey     公钥
+     * @param publicKey  公钥
      * @param sourceData 明文数据
-     *
      * @return
-     *
      * @throws Exception 加密过程中的异常信息
      */
     private byte[] encrypt(RSAPublicKey publicKey, byte[] sourceData) throws Exception {
@@ -259,9 +250,7 @@ public class RSAEncrypt {
      *
      * @param privateKey 私钥
      * @param cipherData 密文数据
-     *
      * @return 明文
-     *
      * @throws Exception 解密过程中的异常信息
      */
     private byte[] decrypt(RSAPrivateKey privateKey, byte[] cipherData) throws Exception {
@@ -291,8 +280,7 @@ public class RSAEncrypt {
     /**
      * 公钥解密
      *
-     * @param cipherData  加密数据
-     *
+     * @param cipherData 加密数据
      * @return 解密后的明文数据
      */
     public String decryptPublicKey(String cipherData) {
@@ -307,7 +295,7 @@ public class RSAEncrypt {
         return result;
     }
 
-   public String decryptPublicKey(byte[] data) {
+    public String decryptPublicKey(byte[] data) {
         String result = "";
         try {
             byte[] content = decryptPublicKey(this.publicKey, data);
@@ -321,11 +309,9 @@ public class RSAEncrypt {
     /**
      * 公钥解密过程
      *
-     * @param publicKey     公钥
+     * @param publicKey  公钥
      * @param sourceData 明文数据
-     *
      * @return
-     *
      * @throws Exception 加密过程中的异常信息
      */
     private byte[] decryptPublicKey(RSAPublicKey publicKey, byte[] sourceData) throws Exception {
@@ -355,12 +341,12 @@ public class RSAEncrypt {
     /**
      * 用私钥对信息生成数字签名
      *
-     * @param data	//加密数据
-     * @param privateKey	//私钥
+     * @param data       //加密数据
+     * @param privateKey //私钥
      * @return
      * @throws Exception
      */
-    public String sign(byte[] data,String privateKey)throws Exception{
+    public String sign(byte[] data, String privateKey) throws Exception {
         //解密私钥
         byte[] keyBytes = Base64.decode(privateKey, Base64.DEFAULT);
         //构造PKCS8EncodedKeySpec对象
@@ -374,15 +360,16 @@ public class RSAEncrypt {
         signature.initSign(privateKey2);
         signature.update(data);
         byte[] signByte = signature.sign();
-        return new String(Base64.encode(signByte, Base64.DEFAULT),"UTF-8");
+        return new String(Base64.encode(signByte, Base64.DEFAULT), "UTF-8");
     }
 
     /**
      * 校验数字签名
-     * @param data	加密数据
-     * @param sign	数字签名
+     *
+     * @param data 加密数据
+     * @param sign 数字签名
      */
-    public boolean verify(byte[] data,String sign)throws Exception{
+    public boolean verify(byte[] data, String sign) throws Exception {
         //加密后的文件
         Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
         signature.initVerify(publicKey);
@@ -395,7 +382,6 @@ public class RSAEncrypt {
      * 十进制字节数据转十六进制字符串
      *
      * @param data 输入数据十进制
-     *
      * @return 十六进制内容
      */
     private String byte2HexStr(byte[] data) {
@@ -414,8 +400,9 @@ public class RSAEncrypt {
 
     /**
      * 十六进制字节数组转十进制
-     * @param hexData  输入十六进制数据
-     * @return    输出十进制数据
+     *
+     * @param hexData 输入十六进制数据
+     * @return 输出十进制数据
      */
     private byte[] hex2byte(byte[] hexData) {
         if ((hexData.length % 2) != 0)
@@ -424,7 +411,7 @@ public class RSAEncrypt {
         byte[] out = new byte[hexData.length / 2];
         for (int n = 0; n < hexData.length; n += 2) {
             String item = new String(hexData, n, 2);
-            out[n / 2]  = (byte) Integer.parseInt(item, 16);
+            out[n / 2] = (byte) Integer.parseInt(item, 16);
         }
 
         return out;

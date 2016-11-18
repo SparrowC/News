@@ -320,18 +320,18 @@ public class DonutProgress extends View {
         setMeasuredDimension(measure(widthMeasureSpec), measure(heightMeasureSpec));
 
         //TODO calculate inner circle height and then position bottom text at the bottom (3/4)
-        innerBottomTextHeight = getHeight() - (getHeight()*3) /4 ;
+        innerBottomTextHeight = getHeight() - (getHeight() * 3) / 4;
     }
 
-    private int measure(int measureSpec){
+    private int measure(int measureSpec) {
         int result;
         int mode = MeasureSpec.getMode(measureSpec);
         int size = MeasureSpec.getSize(measureSpec);
-        if(mode == MeasureSpec.EXACTLY){
+        if (mode == MeasureSpec.EXACTLY) {
             result = size;
-        }else{
+        } else {
             result = min_size;
-            if(mode == MeasureSpec.AT_MOST){
+            if (mode == MeasureSpec.AT_MOST) {
                 result = Math.min(result, size);
             }
         }
@@ -397,7 +397,7 @@ public class DonutProgress extends View {
 
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
-        if(state instanceof Bundle) {
+        if (state instanceof Bundle) {
             final Bundle bundle = (Bundle) state;
             textColor = bundle.getInt(INSTANCE_TEXT_COLOR);
             textSize = bundle.getFloat(INSTANCE_TEXT_SIZE);

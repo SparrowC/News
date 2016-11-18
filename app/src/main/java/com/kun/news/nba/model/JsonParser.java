@@ -5,11 +5,8 @@ import android.text.TextUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 
 import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +21,6 @@ import java.util.Map;
  * @date 16/6/4.
  */
 public class JsonParser {
-
 
 
     public static String parseBase(Base base, String jsonStr) {

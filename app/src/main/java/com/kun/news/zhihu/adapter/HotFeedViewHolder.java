@@ -34,11 +34,11 @@ public class HotFeedViewHolder extends BaseViewHolder<ZhihuHot.RecentBean> {
         mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mData != null && mData.getNews_id() != 0){
+                if (mData != null && mData.getNews_id() != 0) {
                     Intent intent = new Intent(mContext, NewsDetailActivity.class);
-                    intent.putExtra(Constant.EXTRA_NEWS_ID, mData.getNews_id()+"");
+                    intent.putExtra(Constant.EXTRA_NEWS_ID, mData.getNews_id() + "");
                     mContext.startActivity(intent);
-                }else{
+                } else {
                     UIUtils.displayToast(mContext, "此条新闻出错了");
                 }
             }

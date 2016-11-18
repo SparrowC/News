@@ -134,7 +134,7 @@ public class AboutMeActivity extends SlideActivity {
     }
 
     @OnClick(R.id.avatar)
-    public void onAvatarClick(View view){
+    public void onAvatarClick(View view) {
         onBackPressed();
     }
 }

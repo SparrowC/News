@@ -1,7 +1,6 @@
 package com.kun.news.common.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
 
 import java.util.List;
 

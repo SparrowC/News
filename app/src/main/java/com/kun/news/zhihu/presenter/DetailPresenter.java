@@ -73,7 +73,7 @@ public class DetailPresenter extends BasePresenter<ZhihuStory, DetailView> {
 
             @Override
             public void onFailure(Call<ZhihuStoryExtra> call, Throwable t) {
-                if(mView!=null){
+                if (mView != null) {
                     mView.onLoadExtraFailed();
                 }
             }

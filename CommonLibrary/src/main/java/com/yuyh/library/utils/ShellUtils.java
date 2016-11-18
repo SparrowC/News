@@ -28,6 +28,7 @@ public class ShellUtils {
 
     /**
      * 执行命令
+     *
      * @param command
      * @param isRoot
      * @return

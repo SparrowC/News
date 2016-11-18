@@ -1,20 +1,11 @@
 package com.kun.news.http.api.tencent;
 
-import android.text.TextUtils;
-
 import com.kun.news.app.Constant;
-import com.kun.news.common.utils.ACache;
-import com.kun.news.common.utils.AppUtils;
 
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- *
  * @author yuyh.
  * @date 16/6/3.
  */
@@ -24,7 +15,6 @@ public class TencentService {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     static TencentApi api = retrofit.create(TencentApi.class);
-
 
 
 //    /**

@@ -3,7 +3,6 @@ package com.kun.news.nba.presenter;
 import android.text.TextUtils;
 
 import com.kun.news.app.Constant;
-import com.kun.news.common.adapter.BaseAdapter;
 import com.kun.news.common.presenter.BasePresenter;
 import com.kun.news.http.api.tencent.TencentApi;
 import com.kun.news.nba.model.JsonParser;

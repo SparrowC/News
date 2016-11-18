@@ -19,7 +19,7 @@ import org.greenrobot.eventbus.Subscribe;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements  View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     NavigationFragment mNavTab;
 
@@ -30,8 +30,8 @@ public class MainActivity extends BaseActivity implements  View.OnClickListener 
     protected void initData() {
         if (!EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().register(this);
-        FragmentManager manager=getSupportFragmentManager();
-        mNavTab= (NavigationFragment) manager.findFragmentById(R.id.nav_tab);
+        FragmentManager manager = getSupportFragmentManager();
+        mNavTab = (NavigationFragment) manager.findFragmentById(R.id.nav_tab);
         mNavTab.setUp(this, R.id.container, manager, new NavigationFragment.OnNavTabReselectListener() {
             @Override
             public void onReselect(NavigationButton navigationButton) {
@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity implements  View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_fab:
-                Intent intent =new Intent(this,AboutMeActivity.class);
+                Intent intent = new Intent(this, AboutMeActivity.class);
                 startActivity(intent);
                 break;
         }

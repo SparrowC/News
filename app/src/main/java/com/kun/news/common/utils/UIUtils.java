@@ -23,7 +23,7 @@ public class UIUtils {
 
     public static final boolean API_ET_20 = Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT;
 
-    public static void displayToast(Context context,String text){
+    public static void displayToast(Context context, String text) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
     }
 
@@ -40,7 +40,6 @@ public class UIUtils {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
-
 
 
     public final static int getScreenHeight(Context context) {
@@ -65,7 +64,7 @@ public class UIUtils {
 
     public static int getDiggBuryWidth(Context context) {
         int screenWidth = context.getResources().getDisplayMetrics().widthPixels;
-        screenWidth = screenWidth * 1375 / 10000 + (int)(UIUtils.dip2Px(context, 20));
+        screenWidth = screenWidth * 1375 / 10000 + (int) (UIUtils.dip2Px(context, 20));
         return screenWidth;
     }
 

@@ -6,7 +6,8 @@ import com.kun.news.nba.model.NewsDetail;
 /**
  * Created by jiangkun on 16/9/29.
  */
-public interface NbaDetailView extends IBaseView{
+public interface NbaDetailView extends IBaseView {
     void onLoadSuccess(NewsDetail detail);
+
     void onLoadFailed();
 }

@@ -7,12 +7,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.kun.news.R;
 import com.kun.news.app.Constant;
 import com.kun.news.common.adapter.BaseViewHolder;
 import com.kun.news.http.api.tencent.TencentVideoApi;
-import com.kun.news.http.okhttp.OkHttpHelper;
 import com.kun.news.nba.model.NewsItem;
 import com.kun.news.nba.model.PullRealUrlParser;
 import com.kun.news.nba.model.VideoRealUrl;
@@ -21,7 +19,6 @@ import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayInputStream;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import retrofit2.Call;
 import retrofit2.Callback;

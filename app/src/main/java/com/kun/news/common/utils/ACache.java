@@ -9,7 +9,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -262,7 +261,7 @@ public class ACache {
     public void put(String key, byte[] value) {
         File file = mCache.newFile(key);
         if (!file.exists()) {
-            Log.d(TAG,"-----" + file.getAbsolutePath() + "------");
+            Log.d(TAG, "-----" + file.getAbsolutePath() + "------");
             FileUtils.createFile(file);
         }
         FileOutputStream out = null;

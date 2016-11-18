@@ -39,7 +39,9 @@ public class ClipboardUtils {
     }
 
 
-    /***** API>=11 *****/
+    /*****
+     * API>=11
+     *****/
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static void copyToClipboard(Context context, String text) {
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);

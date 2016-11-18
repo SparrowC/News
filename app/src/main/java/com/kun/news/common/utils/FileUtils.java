@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,12 +50,12 @@ public class FileUtils {
         try {
             File file = new File(dirPath);
             if (file.getParentFile().exists()) {
-                Log.i(TAG,"----- 创建文件夹"+file.getAbsolutePath());
+                Log.i(TAG, "----- 创建文件夹" + file.getAbsolutePath());
                 file.mkdir();
                 return file.getAbsolutePath();
             } else {
                 createDir(file.getParentFile().getAbsolutePath());
-                Log.i(TAG,"----- 创建文件夹"+file.getAbsolutePath());
+                Log.i(TAG, "----- 创建文件夹" + file.getAbsolutePath());
                 file.mkdir();
             }
         } catch (Exception e) {
@@ -74,13 +73,13 @@ public class FileUtils {
     public static String createFile(File file) {
         try {
             if (file.getParentFile().exists()) {
-                Log.i(TAG,"----- 创建文件"+file.getAbsolutePath());
+                Log.i(TAG, "----- 创建文件" + file.getAbsolutePath());
                 file.createNewFile();
                 return file.getAbsolutePath();
             } else {
                 createDir(file.getParentFile().getAbsolutePath());
                 file.createNewFile();
-                Log.i(TAG,"----- 创建文件"+file.getAbsolutePath());
+                Log.i(TAG, "----- 创建文件" + file.getAbsolutePath());
             }
         } catch (Exception e) {
             e.printStackTrace();

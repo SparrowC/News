@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class ZhihuDaily{
+public class ZhihuDaily {
     @SerializedName("date")
     private String date;
     @SerializedName("top_stories")

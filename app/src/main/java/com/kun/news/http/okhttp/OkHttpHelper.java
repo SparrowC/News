@@ -2,9 +2,9 @@ package com.kun.news.http.okhttp;
 
 import android.util.Log;
 
-import okhttp3.OkHttpClient;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
 
 
 /**

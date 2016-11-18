@@ -3,7 +3,7 @@ package com.kun.news.zhihu.model;
 import com.google.gson.annotations.SerializedName;
 
 
-public class ZhihuStory  {
+public class ZhihuStory {
     @SerializedName("body")
     private String body;
     @SerializedName("title")

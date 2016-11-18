@@ -3,11 +3,9 @@ package com.yuyh.library.utils;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -209,21 +207,22 @@ public class FieldUtils {
 
     /**
      * 从指定的类中获取指定的方法
-     * @param sourceClass 给定的类
+     *
+     * @param sourceClass          给定的类
      * @param isFindDeclaredMethod 是否查找Declared字段
-     * @param isUpwardFind 是否向上去其父类中寻找
-     * @param methodName 要获取的方法的名字
+     * @param isUpwardFind         是否向上去其父类中寻找
+     * @param methodName           要获取的方法的名字
      * @param methodParameterTypes 方法参数类型
      * @return 给定的类中给定名称以及给定参数类型的方法
      */
-    public static Method getMethod(Class<?> sourceClass, boolean isFindDeclaredMethod, boolean isUpwardFind, String methodName, Class<?>... methodParameterTypes){
+    public static Method getMethod(Class<?> sourceClass, boolean isFindDeclaredMethod, boolean isUpwardFind, String methodName, Class<?>... methodParameterTypes) {
         Method method = null;
         try {
             method = isFindDeclaredMethod ? sourceClass.getDeclaredMethod(methodName, methodParameterTypes) : sourceClass.getMethod(methodName, methodParameterTypes);
         } catch (NoSuchMethodException e1) {
-            if(isUpwardFind){
+            if (isUpwardFind) {
                 Class<?> classs = sourceClass.getSuperclass();
-                while(method == null && classs != null){
+                while (method == null && classs != null) {
                     try {
                         method = isFindDeclaredMethod ? classs.getDeclaredMethod(methodName, methodParameterTypes) : classs.getMethod(methodName, methodParameterTypes);
                     } catch (NoSuchMethodException e11) {
@@ -237,22 +236,24 @@ public class FieldUtils {
 
     /**
      * 从指定的类中获取指定的方法，默认获取Declared类型的方法、向上查找
-     * @param sourceClass 指定的类
-     * @param methodName 方法名
+     *
+     * @param sourceClass          指定的类
+     * @param methodName           方法名
      * @param methodParameterTypes 方法参数类型
      * @return
      */
-    public static Method getMethod(Class<?> sourceClass, String methodName, Class<?>... methodParameterTypes){
+    public static Method getMethod(Class<?> sourceClass, String methodName, Class<?>... methodParameterTypes) {
         return getMethod(sourceClass, true, true, methodName, methodParameterTypes);
     }
 
     /**
      * 从指定的类中获取指定名称的不带任何参数的方法，默认获取Declared类型的方法并且向上查找
+     *
      * @param sourceClass 指定的类
-     * @param methodName 方法名
+     * @param methodName  方法名
      * @return
      */
-    public static Method getMethod(Class<?> sourceClass, String methodName){
+    public static Method getMethod(Class<?> sourceClass, String methodName) {
         return getMethod(sourceClass, methodName, EMPTY_PARAM_TYPES);
     }
 

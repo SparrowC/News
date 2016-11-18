@@ -37,7 +37,9 @@ public class LogUtils {
         LOG_FILE_NAME = "Log";
     }
 
-    /**************************** Warn *********************************/
+    /****************************
+     * Warn
+     *********************************/
     public static void w(Object msg) {
         w(LOG_TAG, msg);
     }
@@ -50,7 +52,9 @@ public class LogUtils {
         log(tag, msg.toString(), tr, 'w');
     }
 
-    /*************************** Error ********************************/
+    /***************************
+     * Error
+     ********************************/
     public static void e(Object msg) {
         e(LOG_TAG, msg);
     }
@@ -63,7 +67,9 @@ public class LogUtils {
         log(tag, msg.toString(), tr, 'e');
     }
 
-    /*************************** Debug ********************************/
+    /***************************
+     * Debug
+     ********************************/
     public static void d(Object msg) {
         d(LOG_TAG, msg);
     }
@@ -76,7 +82,9 @@ public class LogUtils {
         log(tag, msg.toString(), tr, 'd');
     }
 
-    /**************************** Info *********************************/
+    /****************************
+     * Info
+     *********************************/
     public static void i(Object msg) {
         i(LOG_TAG, msg);
     }
@@ -89,7 +97,9 @@ public class LogUtils {
         log(tag, msg == null ? null : msg.toString(), tr, 'i');
     }
 
-    /************************** Verbose ********************************/
+    /**************************
+     * Verbose
+     ********************************/
     public static void v(Object msg) {
         v(LOG_TAG, msg);
     }

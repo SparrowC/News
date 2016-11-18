@@ -21,18 +21,18 @@ public class AutoSplitTextView extends TextView {
     public AutoSplitTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
-    
+
     public void setAutoSplitEnabled(boolean enabled) {
         mEnabled = enabled;
     }
-    
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.EXACTLY 
-            && MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.EXACTLY
-            && getWidth() > 0 
-            && getHeight() > 0
-            && mEnabled) {
+        if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.EXACTLY
+                && MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.EXACTLY
+                && getWidth() > 0
+                && getHeight() > 0
+                && mEnabled) {
             String newText = autoSplitText(this);
             if (!TextUtils.isEmpty(newText)) {
                 setText(newText);
@@ -40,15 +40,15 @@ public class AutoSplitTextView extends TextView {
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
-    
+
     @NonNull
     private String autoSplitText(final TextView tv) {
         final String rawText = tv.getText().toString(); //原始文本
         final Paint tvPaint = tv.getPaint(); //paint，包含字体等信息
         final float tvWidth = tv.getWidth() - tv.getPaddingLeft() - tv.getPaddingRight(); //控件可用宽度
-        
+
         //将原始文本按行拆分
-        String [] rawTextLines = rawText.replaceAll("\r", "").split("\n");
+        String[] rawTextLines = rawText.replaceAll("\r", "").split("\n");
         StringBuilder sbNewText = new StringBuilder();
         for (String rawTextLine : rawTextLines) {
             if (tvPaint.measureText(rawTextLine) <= tvWidth) {
@@ -71,12 +71,12 @@ public class AutoSplitTextView extends TextView {
             }
             sbNewText.append("\n");
         }
-        
+
         //把结尾多余的\n去掉
         if (!rawText.endsWith("\n")) {
             sbNewText.deleteCharAt(sbNewText.length() - 1);
         }
-        
+
         return sbNewText.toString();
     }
 }

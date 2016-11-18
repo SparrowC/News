@@ -1,7 +1,6 @@
 package com.yuyh.library.view.text;
 
 import android.annotation.TargetApi;
-import android.widget.EditText;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -20,6 +19,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 
 import com.yuyh.library.R;
 import com.yuyh.library.utils.DimenUtils;
@@ -125,8 +125,8 @@ public class ShowHidePasswordEditText extends EditText {
         } else if (!leftToRight && left != null) {
             drawableEnd = left;
         }
-        if(drawableEnd != null) // 点击范围太小了，容易点不到，故增加drawable大小
-            drawableEnd.setBounds(0,0, DimenUtils.dpToPxInt(35),DimenUtils.dpToPxInt(35));
+        if (drawableEnd != null) // 点击范围太小了，容易点不到，故增加drawable大小
+            drawableEnd.setBounds(0, 0, DimenUtils.dpToPxInt(35), DimenUtils.dpToPxInt(35));
         super.setCompoundDrawables(left, top, right, bottom);
     }
 
@@ -143,7 +143,7 @@ public class ShowHidePasswordEditText extends EditText {
             Rect rect = new Rect();
             getGlobalVisibleRect(rect);
             rect.left = rect.right - 50;
-            if (rect.contains(eventX, eventY)){ // 判断是否在点击范围之内
+            if (rect.contains(eventX, eventY)) { // 判断是否在点击范围之内
                 togglePasswordVisibility();
                 event.setAction(MotionEvent.ACTION_CANCEL); // 防止弹出软键盘
             }

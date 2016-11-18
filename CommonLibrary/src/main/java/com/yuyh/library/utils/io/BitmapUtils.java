@@ -20,9 +20,9 @@ import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.view.View;
 
+import com.yuyh.library.utils.StringUtils;
 import com.yuyh.library.utils.data.safe.Base64;
 import com.yuyh.library.utils.log.LogUtils;
-import com.yuyh.library.utils.StringUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

@@ -14,5 +14,6 @@ public interface DetailView extends IBaseView {
     void onLoadFailed();
 
     void onLoadExtraSuccess(ZhihuStoryExtra extra);
+
     void onLoadExtraFailed();
 }

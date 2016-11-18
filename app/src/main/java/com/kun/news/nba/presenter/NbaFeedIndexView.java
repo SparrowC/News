@@ -6,7 +6,8 @@ import com.kun.news.nba.model.NewsIndex;
 /**
  * Created by jiangkun on 16/9/29.
  */
-public interface NbaFeedIndexView extends IBaseView{
+public interface NbaFeedIndexView extends IBaseView {
     void onLoadSuccess(NewsIndex newsIndex);
+
     void onLoadFailed();
 }

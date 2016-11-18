@@ -36,8 +36,8 @@ public class FeedViewHolder extends BaseViewHolder<NewsItem.NewsItemBean> {
         mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(mContext, NewsDetailActivity.class);
-                intent.putExtra(Constant.EXTRA_NEWS_ID,mData.index);
+                Intent intent = new Intent(mContext, NewsDetailActivity.class);
+                intent.putExtra(Constant.EXTRA_NEWS_ID, mData.index);
                 mContext.startActivity(intent);
             }
         });

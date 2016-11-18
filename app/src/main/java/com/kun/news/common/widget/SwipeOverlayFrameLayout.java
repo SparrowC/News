@@ -15,9 +15,14 @@ import com.kun.news.common.utils.UIUtils;
 public class SwipeOverlayFrameLayout extends FrameLayout {
 
     public interface OnSwipeListener {
-        /** swipe toward left */
+        /**
+         * swipe toward left
+         */
         public boolean onSwipeLeft();
-        /** swipe toward right */
+
+        /**
+         * swipe toward right
+         */
         public boolean onSwipeRight();
     }
 

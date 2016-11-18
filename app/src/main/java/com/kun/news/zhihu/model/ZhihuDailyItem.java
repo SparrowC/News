@@ -2,7 +2,7 @@ package com.kun.news.zhihu.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ZhihuDailyItem{
+public class ZhihuDailyItem {
     @SerializedName("images")
     private String[] images;
     @SerializedName("type")

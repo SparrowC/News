@@ -21,6 +21,6 @@ public class CommentAdapter extends BaseAdapter<ZhihuComments.CommentsBean> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((CommentViewHolder)holder).bind(mData.get(position));
+        ((CommentViewHolder) holder).bind(mData.get(position));
     }
 }

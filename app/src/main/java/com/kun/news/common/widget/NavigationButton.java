@@ -115,9 +115,9 @@ public class NavigationButton extends FrameLayout {
     @Override
     public void setSelected(boolean selected) {
         super.setSelected(selected);
-        if(selected){
+        if (selected) {
             setAlpha(0.5f);
-        }else {
+        } else {
             setAlpha(1);
         }
     }

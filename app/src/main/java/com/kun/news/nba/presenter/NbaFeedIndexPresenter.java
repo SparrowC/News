@@ -31,8 +31,8 @@ public class NbaFeedIndexPresenter extends BasePresenter<NewsIndex, NbaFeedIndex
                         if (mView != null) {
                             mView.onLoadSuccess(mData);
                         }
-                    }else {
-                        if(mView!=null){
+                    } else {
+                        if (mView != null) {
                             mView.onLoadFailed();
                         }
                     }

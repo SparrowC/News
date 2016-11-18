@@ -7,5 +7,5 @@ import com.kun.news.zhihu.model.ZhihuComments;
  * Created by jiangkun on 16/9/26.
  */
 
-public interface CommentView extends IBaseListView<ZhihuComments.CommentsBean>{
+public interface CommentView extends IBaseListView<ZhihuComments.CommentsBean> {
 }

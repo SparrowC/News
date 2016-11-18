@@ -16,7 +16,9 @@ public class ToastUtils {
     private static Toast mToast;
     private static Context context = AppUtils.getAppContext();
 
-    /********************** 非连续弹出的Toast ***********************/
+    /**********************
+     * 非连续弹出的Toast
+     ***********************/
     public static void showSingleToast(int resId) { //R.string.**
         getSingleToast(resId, Toast.LENGTH_SHORT).show();
     }
@@ -33,7 +35,9 @@ public class ToastUtils {
         getSingleToast(text, Toast.LENGTH_LONG).show();
     }
 
-    /*********************** 连续弹出的Toast ************************/
+    /***********************
+     * 连续弹出的Toast
+     ************************/
     public static void showToast(int resId) {
         getToast(resId, Toast.LENGTH_SHORT).show();
     }

@@ -21,13 +21,15 @@ public abstract class BasePresenter<D, V extends IBaseView> {
     }
 
     public abstract void refreshData(Object... params);
-    public void loadMoreData(Object... params){}
+
+    public void loadMoreData(Object... params) {
+    }
 
     protected Object getApiService(String url, Class clz) {
-        if(mApi==null){
-            synchronized (BasePresenter.class){
-                if(mApi==null){
-                    mApi=getRetrofit(url).create(clz);
+        if (mApi == null) {
+            synchronized (BasePresenter.class) {
+                if (mApi == null) {
+                    mApi = getRetrofit(url).create(clz);
                 }
             }
         }

@@ -9,13 +9,13 @@ import android.view.ViewGroup;
 /**
  * ListView或GridView等的适配器视图缓存公共类，在adapter的getView()中使用
  * public View getView(int position, View convertView, ViewGroup parent){
- *      //实例化一个viewHolder
- *      ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent, R.layout.item_single_str, position);
- *      //通过getView获取控件
- *      TextView tv = viewHolder.getView(R.id.id_tv_title);
- *      //使用
- *      tv.setText(mDatas.get(position));
- *      return viewHolder.getConvertView();
+ * //实例化一个viewHolder
+ * ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent, R.layout.item_single_str, position);
+ * //通过getView获取控件
+ * TextView tv = viewHolder.getView(R.id.id_tv_title);
+ * //使用
+ * tv.setText(mDatas.get(position));
+ * return viewHolder.getConvertView();
  * }
  *
  * @author yuyh.

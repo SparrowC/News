@@ -7,8 +7,11 @@ import java.util.List;
  */
 
 public interface IBaseListView<D> extends IBaseView {
-    void onRefreshSuccess(List<D> data,Object... extra);
+    void onRefreshSuccess(List<D> data, Object... extra);
+
     void onRefreshFailed();
-    void onLoadMoreSuccess(List<D> data,Object... extra);
+
+    void onLoadMoreSuccess(List<D> data, Object... extra);
+
     void onLoadMoreFailed();
 }

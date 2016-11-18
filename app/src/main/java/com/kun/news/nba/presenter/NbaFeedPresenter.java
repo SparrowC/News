@@ -4,8 +4,6 @@ import android.text.TextUtils;
 
 import com.kun.news.app.Constant;
 import com.kun.news.common.presenter.BaseListPresenter;
-import com.kun.news.common.utils.ACache;
-import com.kun.news.common.utils.AppUtils;
 import com.kun.news.http.api.tencent.TencentApi;
 import com.kun.news.nba.model.JsonParser;
 import com.kun.news.nba.model.NewsItem;

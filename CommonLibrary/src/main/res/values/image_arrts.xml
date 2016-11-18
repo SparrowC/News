@@ -8,10 +8,10 @@
     <declare-styleable name="RounderImageView">
         <attr name="roundWidth" format="dimension" />
         <attr name="roundHeight" format="dimension" />
-        <attr name="leftUp" format="boolean"/>
-        <attr name="rightUp" format="boolean"/>
-        <attr name="leftDown" format="boolean"/>
-        <attr name="rightDown" format="boolean"/>
+        <attr name="leftUp" format="boolean" />
+        <attr name="rightUp" format="boolean" />
+        <attr name="leftDown" format="boolean" />
+        <attr name="rightDown" format="boolean" />
     </declare-styleable>
 
 </resources>
