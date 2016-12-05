@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kun.news.R;
-import com.kun.news.base.ui.SlideActivity;
+import com.kun.news.common.activity.NewsAbsActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -21,7 +21,7 @@ import butterknife.OnClick;
  * Created by jiangkun on 16/9/30.
  */
 
-public class AboutMeActivity extends SlideActivity {
+public class AboutMeActivity extends NewsAbsActivity {
     // 控制ToolBar的变量
     private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.9f;
     private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS = 0.3f;
@@ -70,6 +70,12 @@ public class AboutMeActivity extends SlideActivity {
     @Override
     protected void initView() {
         ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        ButterKnife.unbind(this);
+        super.onDestroy();
     }
 
     @Override

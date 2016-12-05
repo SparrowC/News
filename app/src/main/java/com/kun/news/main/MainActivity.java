@@ -3,23 +3,26 @@ package com.kun.news.main;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 
+import com.kun.baselib.component.ComponentType;
+import com.kun.baselib.component.IActivityComponent;
 import com.kun.news.R;
-import com.kun.news.common.activty.BaseActivity;
+import com.kun.news.common.activity.NewsAbsActivity;
 import com.kun.news.common.widget.NavigationButton;
+import com.kun.news.component.EventBusComponent;
 import com.kun.news.zhihu.event.ScrollEvent;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends NewsAbsActivity implements View.OnClickListener {
 
     NavigationFragment mNavTab;
 
@@ -27,9 +30,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     FloatingActionButton mMainFab;
 
     @Override
+    public SparseArray<IActivityComponent> getComponents() {
+        SparseArray<IActivityComponent> components = super.getComponents();
+        components.append(ComponentType.EVENT_BUS, new EventBusComponent());
+        return components;
+    }
+
+    @Override
     protected void initData() {
-        if (!EventBus.getDefault().isRegistered(this))
-            EventBus.getDefault().register(this);
         FragmentManager manager = getSupportFragmentManager();
         mNavTab = (NavigationFragment) manager.findFragmentById(R.id.nav_tab);
         mNavTab.setUp(this, R.id.container, manager, new NavigationFragment.OnNavTabReselectListener() {
@@ -50,8 +58,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
-        if (EventBus.getDefault().isRegistered(this))
-            EventBus.getDefault().unregister(this);
     }
 
     @Override

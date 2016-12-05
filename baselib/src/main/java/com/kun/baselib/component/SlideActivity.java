@@ -1,19 +1,20 @@
-package com.kun.news.base.ui;
+package com.kun.baselib.component;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.kun.news.R;
+import com.kun.baselib.R;
+import com.kun.baselib.activty.BaseActivity;
 
 /**
  * Created by kun on 2016/11/18.
  */
 
-public abstract class SlideActivity extends NewsAbsActivity {
+public abstract class SlideActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         overridePendingTransition(R.animator.activity_enter, 0);
+        super.onCreate(savedInstanceState);
     }
 
     @Override

@@ -8,9 +8,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
+import com.kun.baselib.fragment.AbsFragment;
 import com.kun.news.R;
 import com.kun.news.app.Constant;
-import com.kun.news.common.fragment.AbsFragment;
 import com.kun.news.common.widget.NavigationButton;
 import com.kun.news.nba.ui.NbaFragment;
 import com.kun.news.zhihu.ui.ZhihuFragment;

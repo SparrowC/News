@@ -1,4 +1,4 @@
-package com.kun.news.base.ui;
+package com.kun.baselib.component;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
  */
 
 public class ActivityComponent implements IActivityComponent {
-    private ComponentActivity mActivity;
+    protected ComponentActivity mActivity;
 
     public Context getContext() {
         return mActivity;

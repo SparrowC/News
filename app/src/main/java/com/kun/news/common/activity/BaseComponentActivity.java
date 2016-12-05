@@ -1,8 +1,11 @@
-package com.kun.news.base.ui;
+package com.kun.news.common.activity;
 
 import android.util.SparseArray;
 
-import com.kun.news.base.ui.component.CurActivityComponent;
+import com.kun.baselib.component.ComponentActivity;
+import com.kun.baselib.component.ComponentType;
+import com.kun.baselib.component.IActivityComponent;
+import com.kun.news.component.CurActivityComponent;
 
 /**
  * Created by kun on 2016/11/18.

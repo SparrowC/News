@@ -10,7 +10,7 @@ import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.kun.news.R;
 import com.kun.news.app.Constant;
-import com.kun.news.base.ui.SlideActivity;
+import com.kun.news.common.activity.NewsAbsActivity;
 import com.kun.news.common.presenter.IBaseListView;
 import com.kun.news.zhihu.adapter.CommentAdapter;
 import com.kun.news.zhihu.presenter.CommentPresenter;
@@ -25,7 +25,7 @@ import butterknife.OnClick;
  * Created by jiangkun on 16/9/26.
  */
 
-public class CommentActivity extends SlideActivity implements OnLoadMoreListener, IBaseListView {
+public class CommentActivity extends NewsAbsActivity implements OnLoadMoreListener, IBaseListView {
     @Bind(R.id.swipe_target)
     RecyclerView mListView;
 

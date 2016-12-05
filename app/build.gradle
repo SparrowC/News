@@ -12,9 +12,21 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        buildTypes {
+            release {
+                minifyEnabled true
+                shrinkResources true
+                multiDexEnabled true
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'react-native-proguard-rules.pro'
+//                signingConfig signingConfigs.bytedanceSignConfig
+            }
+
+            debug {
+                multiDexEnabled true
+                proguardFiles 'proguard-rules_debug.txt'
+//            multiDexKeepProguard file('mainDexClasses.rules')
+                // keep specific classes using proguard syntax
+            }
         }
     }
 }
@@ -25,28 +37,5 @@ repositories {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':CommonLibrary')
-    //    rotrofit
-    compile 'com.squareup.retrofit2:retrofit:+'
-    compile 'com.squareup.retrofit2:converter-gson:+'
-    compile 'com.squareup.retrofit2:adapter-rxjava:+'
-    compile 'com.google.code.gson:gson:+'
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-scalars:2.0.0-beta4'
-    compile 'com.google.code.gson:gson:2.7'
-    compile 'com.alibaba:fastjson:1.2.12'
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support:cardview-v7:24.2.1'
-    compile 'com.android.support:recyclerview-v7:24.2.1'
-    //pull to refresh
-    compile 'com.github.Aspsine:SwipeToLoadLayout:1.0.3'
-    //SimpleDraweeView
-    compile 'com.facebook.fresco:fresco:0.12.0'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    //Design Support Library
-    compile 'com.android.support:design:24.2.1'
-    //video player
-    compile 'fm.jiecao:jiecaovideoplayer:4.7.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile project(':baselib')
 }

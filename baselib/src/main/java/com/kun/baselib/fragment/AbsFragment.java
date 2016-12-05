@@ -1,4 +1,4 @@
-package com.kun.news.common.fragment;
+package com.kun.baselib.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

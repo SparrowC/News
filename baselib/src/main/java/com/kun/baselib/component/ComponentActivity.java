@@ -1,17 +1,15 @@
-package com.kun.news.base.ui;
+package com.kun.baselib.component;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.SparseArray;
 
-import com.kun.news.common.activty.BaseActivity;
-
 /**
  * Created by kun on 2016/11/18.
  */
 
-public abstract class ComponentActivity extends BaseActivity {
+public abstract class ComponentActivity extends SlideActivity {
     private SparseArray<IActivityComponent> mComponents;
 
     /**

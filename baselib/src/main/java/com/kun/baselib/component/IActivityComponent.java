@@ -1,4 +1,4 @@
-package com.kun.news.base.ui;
+package com.kun.baselib.component;
 
 import android.content.Intent;
 import android.os.Bundle;

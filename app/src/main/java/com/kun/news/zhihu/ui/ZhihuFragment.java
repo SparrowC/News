@@ -4,9 +4,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.kun.baselib.fragment.AbsFragment;
 import com.kun.news.R;
 import com.kun.news.app.Constant;
-import com.kun.news.common.fragment.AbsFragment;
 import com.kun.news.main.VPFragmentAdapter;
 
 import java.util.ArrayList;

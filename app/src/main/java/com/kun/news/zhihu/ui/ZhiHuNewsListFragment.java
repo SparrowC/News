@@ -10,10 +10,10 @@ import android.widget.ProgressBar;
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
+import com.kun.baselib.fragment.AbsFragment;
 import com.kun.news.R;
 import com.kun.news.app.Constant;
 import com.kun.news.common.adapter.BaseAdapter;
-import com.kun.news.common.fragment.AbsFragment;
 import com.kun.news.common.presenter.BasePresenter;
 import com.kun.news.zhihu.adapter.FeedAdapter;
 import com.kun.news.zhihu.adapter.HotFeedAdapter;
@@ -109,7 +109,9 @@ public class ZhiHuNewsListFragment extends AbsFragment implements OnRefreshListe
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPresenter.unbindView();
+        if (mPresenter != null) {
+            mPresenter.unbindView();
+        }
     }
 
     @Override

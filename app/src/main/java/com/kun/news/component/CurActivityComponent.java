@@ -1,12 +1,12 @@
-package com.kun.news.base.ui.component;
+package com.kun.news.component;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.kun.baselib.component.ActivityComponent;
+import com.kun.baselib.component.ComponentActivity;
 import com.kun.news.app.NewsApplication;
-import com.kun.news.base.ui.ActivityComponent;
-import com.kun.news.base.ui.ComponentActivity;
 
 /**
  * Created by kun on 2016/11/18.
