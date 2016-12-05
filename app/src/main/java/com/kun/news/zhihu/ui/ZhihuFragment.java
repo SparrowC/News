@@ -55,11 +55,13 @@ public class ZhihuFragment extends AbsFragment implements ViewPager.OnPageChange
     @Override
     public void onPageSelected(int position) {
         if (position == 0) {
+//            Toast.makeText(getContext(),"补丁生效",Toast.LENGTH_LONG).show();
             mRedLine1.setVisibility(View.VISIBLE);
             mRedLine2.setVisibility(View.INVISIBLE);
             mHotTab.setTextColor(getActivity().getResources().getColor(R.color.material_red));
             mNewsTab.setTextColor(getActivity().getResources().getColor(R.color.text_black));
         } else {
+//            Toast.makeText(getContext(),"补丁生效",Toast.LENGTH_LONG).show();
             mRedLine1.setVisibility(View.INVISIBLE);
             mRedLine2.setVisibility(View.VISIBLE);
             mNewsTab.setTextColor(getActivity().getResources().getColor(R.color.material_red));

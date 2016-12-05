@@ -19,6 +19,7 @@ android {
     }
 }
 repositories {
+    jcenter()
     maven { url "https://jitpack.io" }
 }
 
@@ -30,23 +31,74 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:+'
     compile 'com.squareup.retrofit2:adapter-rxjava:+'
     compile 'com.google.code.gson:gson:+'
-    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-scalars:2.0.0-beta4'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.alibaba:fastjson:1.2.12'
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support:cardview-v7:24.2.1'
-    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.android.support:cardview-v7:23.2.1'
+    compile 'com.android.support:recyclerview-v7:23.2.1'
     //pull to refresh
     compile 'com.github.Aspsine:SwipeToLoadLayout:1.0.3'
     //SimpleDraweeView
     compile 'com.facebook.fresco:fresco:0.12.0'
     compile 'org.greenrobot:eventbus:3.0.0'
     //Design Support Library
-    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:design:23.2.1'
     //video player
     compile 'fm.jiecao:jiecaovideoplayer:4.7.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //可选，用于生成application类
+    provided('com.tencent.tinker:tinker-android-anno:1.7.5')
+    //tinker的核心库
+    compile('com.tencent.tinker:tinker-android-lib:1.7.5')
+    compile "com.android.support:multidex:1.0.1"
+}
+
+apply plugin: 'com.tencent.tinker.patch'
+
+tinkerPatch {
+
+    oldApk = "/Users/kun/code/android/apk/app-debug.apk"
+    ignoreWarning = true
+    useSign = true
+    buildConfig {
+        applyMapping = null
+        applyResourceMapping = null
+        tinkerId = "1.0"
+    }
+
+    dex {
+        dexMode = "jar"
+        usePreGeneratedPatchDex = false
+        pattern = ["classes*.dex",
+                   "assets/secondary-dex-?.jar"]
+        loader = ["com.tencent.tinker.loader.*",
+                  "demo.com.tinkerdemo.SimpleApp",
+                  "demo.com.tinkerdemo.BaseBuildInfo"
+        ]
+    }
+
+    lib {
+        pattern = ["lib/armeabi/*.so"]
+    }
+
+    res {
+        pattern = ["res/*", "assets/*", "resources.arsc", "AndroidManifest.xml"]
+        ignoreChange = ["assets/sample_meta.txt"]
+        largeModSize = 100
+    }
+
+    packageConfig {
+        configField("patchMessage", "tinker is sample to use")
+        configField("platform", "all")
+        configField("patchVersion", "1.0")
+    }
+
+    sevenZip {
+        zipArtifact = "com.tencent.mm:SevenZip:1.1.10"
+    }
 }

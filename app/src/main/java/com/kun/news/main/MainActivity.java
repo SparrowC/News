@@ -1,20 +1,25 @@
 package com.kun.news.main;
 
-import android.content.Intent;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.Toast;
 
 import com.kun.news.R;
 import com.kun.news.common.activty.BaseActivity;
 import com.kun.news.common.widget.NavigationButton;
 import com.kun.news.zhihu.event.ScrollEvent;
+import com.tencent.tinker.lib.tinker.TinkerInstaller;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import java.io.File;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -63,8 +68,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_fab:
-                Intent intent = new Intent(this, AboutMeActivity.class);
-                startActivity(intent);
+//                Toast.makeText(this,"补丁生效",Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent(this, AboutMeActivity.class);
+//                startActivity(intent);
+                String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/patch_signed_7zip.apk";
+                File file = new File(path);
+                if (file.exists()) {
+                    Log.e("patch", path + "补丁存在");
+                    Toast.makeText(this, "补丁存在", Toast.LENGTH_LONG).show();
+                    TinkerInstaller.onReceiveUpgradePatch(this.getApplication(), path);
+                } else {
+                    Log.e("patch", path + "补丁不存在");
+                    Toast.makeText(this, "补丁不存在", Toast.LENGTH_LONG).show();
+                }
                 break;
         }
     }

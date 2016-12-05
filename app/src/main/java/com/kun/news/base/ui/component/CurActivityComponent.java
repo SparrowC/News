@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.kun.news.app.NewsApplication;
+import com.kun.news.app.NewsApplicationLike;
 import com.kun.news.base.ui.ActivityComponent;
 import com.kun.news.base.ui.ComponentActivity;
 
@@ -16,13 +16,13 @@ public class CurActivityComponent extends ActivityComponent {
 
     @Override
     public void onCreate(@Nullable ComponentActivity activity, @Nullable Bundle savedInstanceState) {
-        NewsApplication.getInstance().setCurActivity(activity);
+        NewsApplicationLike.getInstance().setCurActivity(activity);
         super.onCreate(activity, savedInstanceState);
     }
 
     @Override
     public void onResume() {
-        NewsApplication.getInstance().setCurActivity(getActivity());
+        NewsApplicationLike.getInstance().setCurActivity(getActivity());
         super.onResume();
     }
 
@@ -39,9 +39,9 @@ public class CurActivityComponent extends ActivityComponent {
     }
 
     private void clearCurActivity() {
-        Activity curActivity = NewsApplication.getInstance().getCurActivity();
+        Activity curActivity = NewsApplicationLike.getInstance().getCurActivity();
         if (curActivity != null && curActivity.equals(getActivity())) {
-            NewsApplication.getInstance().setCurActivity(null);
+            NewsApplicationLike.getInstance().setCurActivity(null);
         }
     }
 }

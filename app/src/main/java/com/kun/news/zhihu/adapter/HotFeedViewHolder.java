@@ -27,6 +27,8 @@ public class HotFeedViewHolder extends BaseViewHolder<ZhihuHot.RecentBean> {
 
     public HotFeedViewHolder(View itemView) {
         super(itemView);
+        UIUtils.displayToast(mContext, "补丁生效了");
+
         mContext = itemView.getContext();
         mTitle = (TextView) itemView.findViewById(R.id.title);
         mImage = (SimpleDraweeView) itemView.findViewById(R.id.image);
