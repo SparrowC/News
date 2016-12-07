@@ -12,7 +12,7 @@ import com.kun.news.app.NewsApplication;
  * Created by kun on 2016/11/18.
  */
 
-public class CurActivityComponent extends ActivityComponent {
+public class CurrentActivityComponent extends ActivityComponent {
 
     @Override
     public void onCreate(@Nullable ComponentActivity activity, @Nullable Bundle savedInstanceState) {

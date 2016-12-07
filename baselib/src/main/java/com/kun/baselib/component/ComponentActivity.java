@@ -13,9 +13,9 @@ public abstract class ComponentActivity extends SlideActivity {
     private SparseArray<IActivityComponent> mComponents;
 
     /**
-     * 注册组件
+     * Register components
      *
-     * @return 返回需要注册的组件数组
+     * @return the components needs to be register
      */
     protected abstract SparseArray<IActivityComponent> registerComponents();
 

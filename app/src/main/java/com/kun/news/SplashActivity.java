@@ -27,6 +27,6 @@ public class SplashActivity extends Activity {
             public void run() {
                 redirect();
             }
-        }, 800);
+        }, 0);
     }
 }

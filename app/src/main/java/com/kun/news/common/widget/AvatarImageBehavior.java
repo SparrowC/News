@@ -9,11 +9,6 @@ import android.view.View;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.kun.news.R;
 
-/**
- * 图片控件位置动画
- *
- * @author wangchenlong
- */
 @SuppressWarnings("unused")
 public class AvatarImageBehavior extends CoordinatorLayout.Behavior<SimpleDraweeView> {
 

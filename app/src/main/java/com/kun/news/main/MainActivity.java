@@ -3,20 +3,17 @@ package com.kun.news.main;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
-import android.util.SparseArray;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 
-import com.kun.baselib.component.ComponentType;
-import com.kun.baselib.component.IActivityComponent;
 import com.kun.news.R;
 import com.kun.news.common.activity.NewsAbsActivity;
 import com.kun.news.common.widget.NavigationButton;
-import com.kun.news.component.EventBusComponent;
 import com.kun.news.zhihu.event.ScrollEvent;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.Bind;
@@ -28,13 +25,6 @@ public class MainActivity extends NewsAbsActivity implements View.OnClickListene
 
     @Bind(R.id.main_fab)
     FloatingActionButton mMainFab;
-
-    @Override
-    public SparseArray<IActivityComponent> getComponents() {
-        SparseArray<IActivityComponent> components = super.getComponents();
-        components.append(ComponentType.EVENT_BUS, new EventBusComponent());
-        return components;
-    }
 
     @Override
     protected void initData() {
@@ -51,6 +41,9 @@ public class MainActivity extends NewsAbsActivity implements View.OnClickListene
     @Override
     protected void initView() {
         ButterKnife.bind(this);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
         mMainFab.setOnClickListener(this);
     }
 
@@ -58,6 +51,9 @@ public class MainActivity extends NewsAbsActivity implements View.OnClickListene
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     @Override

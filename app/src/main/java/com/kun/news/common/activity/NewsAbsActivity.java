@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 /**
+ * All activity should extends {@link NewsAbsActivity}
  * Created by kun on 2016/11/18.
  */
 

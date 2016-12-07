@@ -132,7 +132,7 @@ public class NbaFragment extends AbsFragment implements IBaseListView, NbaFeedIn
         UIUtils.displayToast(getActivity(), "加载失败!");
     }
 
-    //加载NBA index
+    //load NBA index
     @Override
     public void onLoadSuccess(NewsIndex newsIndex) {
         mIndexBeen = newsIndex.data;
