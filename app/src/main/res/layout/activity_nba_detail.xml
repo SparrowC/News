@@ -15,6 +15,7 @@
             android:id="@+id/bg_image"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:transitionName="@string/transition"
             android:scaleType="fitXY" />
 
         <android.support.v4.widget.NestedScrollView

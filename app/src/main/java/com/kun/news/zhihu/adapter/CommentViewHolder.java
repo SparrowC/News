@@ -40,13 +40,9 @@ public class CommentViewHolder extends BaseViewHolder<ZhihuComments.CommentsBean
         mLikes.setText(data.getLikes() + "赞");
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
-//            Date date = format.parse());
-//            String dateStr = date.getYear() + "-" + date.getMonth() + "-" + date.getDate();
             mDate.setText(format.format(new Long(data.getTime())));
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        Date date = new Date(data.getTime() * 10000);
-
     }
 }

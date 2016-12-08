@@ -2,6 +2,7 @@ package com.kun.news.zhihu.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.kun.news.R;
 import com.kun.news.app.Constant;
+import com.kun.news.app.NewsApplication;
 import com.kun.news.common.adapter.BaseViewHolder;
 import com.kun.news.common.utils.UIUtils;
 import com.kun.news.zhihu.model.ZhihuDailyItem;
@@ -37,12 +39,18 @@ public class FeedViewHolder extends BaseViewHolder<ZhihuDailyItem> {
                 if (mData != null && !TextUtils.isEmpty(mData.getId())) {
                     Intent intent = new Intent(mContext, NewsDetailActivity.class);
                     intent.putExtra(Constant.EXTRA_NEWS_ID, mData.getId());
-                    mContext.startActivity(intent);
+                    startTransitionActivity(intent);
                 } else {
                     UIUtils.displayToast(mContext, "此条新闻出错了");
                 }
             }
         });
+    }
+
+    private void startTransitionActivity(Intent intent) {
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                NewsApplication.getInstance().getCurActivity(), mImage, mContext.getString(R.string.transition));
+        NewsApplication.getInstance().getCurActivity().startActivity(intent, options.toBundle());
     }
 
     @Override
@@ -53,4 +61,6 @@ public class FeedViewHolder extends BaseViewHolder<ZhihuDailyItem> {
         if (data.getImages() == null || data.getImages().length == 0) return;
         mImage.setImageURI(data.getImages()[0]);
     }
+
+
 }
