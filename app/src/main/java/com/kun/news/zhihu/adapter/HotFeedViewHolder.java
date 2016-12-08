@@ -41,7 +41,7 @@ public class HotFeedViewHolder extends BaseViewHolder<ZhihuHot.RecentBean> {
                     intent.putExtra(Constant.EXTRA_NEWS_ID, mData.getNews_id() + "");
                     startTransitionActivity(intent);
                 } else {
-                    UIUtils.displayToast(mContext, "此条新闻出错了");
+                    UIUtils.displayToast(mContext, mContext.getString(R.string.news_error));
                 }
             }
         });

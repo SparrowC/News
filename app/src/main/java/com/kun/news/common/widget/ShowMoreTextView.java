@@ -46,6 +46,7 @@ public class ShowMoreTextView extends LinearLayout implements View.OnClickListen
                 , context.getResources().getColor(R.color.primary_text));
         text = array.getString(R.styleable.ShowMoreTextView_text);
         maxLine = array.getInteger(R.styleable.ShowMoreTextView_maxLine, 2);
+        array.recycle();
     }
 
     private void init(Context context) {
@@ -56,7 +57,7 @@ public class ShowMoreTextView extends LinearLayout implements View.OnClickListen
         mText.setText(text);
 
         mShowMore = (TextView) root.findViewById(R.id.show_more);
-        mShowMore.setText("展开");
+        mShowMore.setText(R.string.text_show);
         mShowMore.setVisibility(GONE);
         mIsShowMore = false;
         mText.post(new Runnable() {
@@ -72,11 +73,11 @@ public class ShowMoreTextView extends LinearLayout implements View.OnClickListen
         if (view.getId() == R.id.show_more && mShowMore.isCursorVisible()) {
             if (mIsShowMore) {
                 mText.setMaxLines(maxLine);
-                mShowMore.setText("展开");
+                mShowMore.setText(R.string.text_show);
                 mIsShowMore = false;
             } else {
                 mText.setMaxLines(Integer.MAX_VALUE);
-                mShowMore.setText("隐藏");
+                mShowMore.setText(R.string.text_hide);
                 mIsShowMore = true;
             }
         }

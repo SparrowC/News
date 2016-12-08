@@ -21,12 +21,6 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activty_splash);
-        findViewById(R.id.splash_view).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                redirect();
-            }
-        }, 0);
+        redirect();
     }
 }

@@ -27,6 +27,7 @@
             android:clickable="true"
             android:src="@mipmap/ic_github"
             android:elevation="4dp"
+            android:transitionName="@string/transition_float"
             app:elevation="4dp"
             app:layout_anchor="@id/container"
             app:borderWidth="0dp"

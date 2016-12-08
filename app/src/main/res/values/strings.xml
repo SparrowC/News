@@ -22,5 +22,9 @@
     <string name="nba_news">NBA新闻</string>
     <string name="nba_video">NBA视频</string>
     <string name="transition">share_view</string>
+    <string name="news_error">此条新闻出错了</string>
+    <string name="transition_float">transition_float</string>
+    <string name="text_show">show</string>
+    <string name="text_hide">hide</string>
 
 </resources>

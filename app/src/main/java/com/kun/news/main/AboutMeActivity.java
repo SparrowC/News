@@ -1,7 +1,10 @@
 package com.kun.news.main;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -48,6 +51,13 @@ public class AboutMeActivity extends NewsAbsActivity {
 
     @Bind(R.id.main_tb_toolbar)
     Toolbar mTbToolbar; // 工具栏
+
+    public static void startTransitionActivity(Activity activity, View view) {
+        Intent intent = new Intent(activity, AboutMeActivity.class);
+        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                activity, view, activity.getResources().getString(R.string.transition_float));
+        activity.startActivity(intent, optionsCompat.toBundle());
+    }
 
     @Override
     protected void initData() {

@@ -1,6 +1,5 @@
 package com.kun.news.main;
 
-import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
@@ -65,8 +64,7 @@ public class MainActivity extends NewsAbsActivity implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_fab:
-                Intent intent = new Intent(this, AboutMeActivity.class);
-                startActivity(intent);
+                AboutMeActivity.startTransitionActivity(this, view);
                 break;
         }
     }
