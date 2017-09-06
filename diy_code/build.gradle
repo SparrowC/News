@@ -12,7 +12,6 @@ android {
         versionName VERSION_NAME
 
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -23,8 +22,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.github.promeg:tinypinyin:1.0.0'
-    compile 'com.google.code.gson:gson:2.3.1'
+//    compile (project(':baselib')) {
+//        exclude group: 'com.github.Aspsine', module: 'SwipeToLoadLayout'
+//        exclude group: 'com.github.chrisbanes', module: 'PhotoView'
+//    }
 }

@@ -22,4 +22,11 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />
+
+    <com.kun.news.common.widget.NavigationButton
+        android:id="@+id/nav_diy_code"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
 </LinearLayout>

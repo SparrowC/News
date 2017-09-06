@@ -4,6 +4,7 @@ package com.kun.news.zhihu.ui;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -21,6 +22,8 @@ import com.kun.news.zhihu.presenter.DetailView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import uk.co.senab.photoview.PhotoView;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * Created by jiangkun on 16/9/25.
@@ -38,8 +41,16 @@ public class NewsDetailActivity extends NewsAbsActivity implements DetailView {
     TextView mLikes;
     @Bind(R.id.comment_count)
     TextView mCommentCount;
+    @Bind(R.id.nest)
+    View mNestView;
+    @Bind(R.id.comment_layout)
+    ViewGroup mCommentLayout;
+    @Bind(R.id.photo_view)
+    PhotoView mPhotoView;
     private DetailPresenter mPresenter;
     private String mId;
+    private ZhihuStory mZhihuStory;
+    PhotoViewAttacher mAttacher;
 
     @Override
     protected void initData() {
@@ -55,6 +66,7 @@ public class NewsDetailActivity extends NewsAbsActivity implements DetailView {
 
         mLikes.setText(0 + "赞");
         mCommentCount.setText(0 + "评论");
+        mAttacher = new PhotoViewAttacher(mPhotoView);
     }
 
     @Override
@@ -70,16 +82,26 @@ public class NewsDetailActivity extends NewsAbsActivity implements DetailView {
         ButterKnife.unbind(this);
     }
 
-    @OnClick(R.id.back_btn)
-    public void onBack(View view) {
-        onBackPressed();
-    }
-
-    @OnClick(R.id.comment_count)
-    public void enterComment(View view) {
-        Intent intent = new Intent(this, CommentActivity.class);
-        intent.putExtra(Constant.EXTRA_NEWS_ID, mId);
-        startActivity(intent);
+    @OnClick({R.id.back_btn, R.id.comment_layout, R.id.bg_image, R.id.photo_view})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.back_btn:
+                onBackPressed();
+                break;
+            case R.id.comment_layout:
+                Intent intent = new Intent(this, CommentActivity.class);
+                intent.putExtra(Constant.EXTRA_NEWS_ID, mId);
+                startActivity(intent);
+                break;
+            case R.id.bg_image:
+                if (TextUtils.isEmpty(mZhihuStory.getImage())) return;
+                mPhotoView.setImageDrawable(mBgImage.getDrawable());
+                mPhotoView.setVisibility(View.VISIBLE);
+                break;
+            case R.id.photo_view:
+                mPhotoView.setVisibility(View.GONE);
+                break;
+        }
     }
 
     @Override
@@ -93,6 +115,7 @@ public class NewsDetailActivity extends NewsAbsActivity implements DetailView {
             UIUtils.displayToast(this, "加载失败!");
             return;
         }
+        mZhihuStory = story;
         mTitle.setText(story.getTitle());
         mBgImage.setImageURI(story.getImage());
         if (TextUtils.isEmpty(story.getBody())) {
@@ -118,5 +141,14 @@ public class NewsDetailActivity extends NewsAbsActivity implements DetailView {
     @Override
     public void onLoadExtraFailed() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mPhotoView.getVisibility() == View.VISIBLE) {
+            mPhotoView.setVisibility(View.GONE);
+        } else {
+            super.onBackPressed();
+        }
     }
 }
