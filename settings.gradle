@@ -1,2 +1,2 @@
-include ':app', ':baselib'
+include ':app', ':baselib', ':diy_code'
 include ':CommonLibrary'

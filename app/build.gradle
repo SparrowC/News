@@ -36,6 +36,6 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':CommonLibrary')
     compile project(':baselib')
+    compile project(':diy_code')
 }

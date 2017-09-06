@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/CommonLibrary" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baselib" />
+            <option value="$PROJECT_DIR$/diy_code" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -26,5 +26,6 @@
     <string name="transition_float">transition_float</string>
     <string name="text_show">show</string>
     <string name="text_hide">hide</string>
+    <string name="code">code</string>
 
 </resources>

@@ -22,8 +22,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-//    compile (project(':baselib')) {
-//        exclude group: 'com.github.Aspsine', module: 'SwipeToLoadLayout'
-//        exclude group: 'com.github.chrisbanes', module: 'PhotoView'
-//    }
+    compile(project(':baselib')) {
+        exclude group: 'com.github.Aspsine', module: 'SwipeToLoadLayout'
+        exclude group: 'com.github.chrisbanes', module: 'PhotoView'
+    }
 }

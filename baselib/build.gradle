@@ -24,6 +24,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':CommonLibrary')
 
     //    rotrofit
     compile 'com.squareup.retrofit2:retrofit:+'

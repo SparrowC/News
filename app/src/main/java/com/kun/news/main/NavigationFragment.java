@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.kun.baselib.fragment.AbsFragment;
+import com.kun.diy_code.DiyCodeFragment;
 import com.kun.news.R;
 import com.kun.news.app.Constant;
 import com.kun.news.common.widget.NavigationButton;
@@ -32,6 +33,9 @@ public class NavigationFragment extends AbsFragment {
     @Bind(R.id.nav_nba_video)
     NavigationButton mNavNbaVideo;
 
+    @Bind(R.id.nav_diy_code)
+    NavigationButton mNavCode;
+
     private NavigationButton mCurNavBtn;
     private OnNavTabReselectListener mNavTabReselectListener;
     private FragmentManager mFragmentManager;
@@ -51,6 +55,8 @@ public class NavigationFragment extends AbsFragment {
 
         mNavNbaVideo.init(R.drawable.tab_icon_tweet, R.string.nba_video, NbaFragment.class);
         mNavNbaVideo.setTag("videos");
+
+        mNavCode.init(R.drawable.tab_icon_me, R.string.code, DiyCodeFragment.class);
     }
 
     @Override
@@ -68,11 +74,12 @@ public class NavigationFragment extends AbsFragment {
         doSelect(null, mNavZixun);
     }
 
-    @OnClick({R.id.nav_zixun, R.id.nav_nba_news, R.id.nav_nba_video})
+    @OnClick({R.id.nav_zixun, R.id.nav_nba_news, R.id.nav_nba_video, R.id.nav_diy_code})
     public void onClick(View view) {
         mNavZixun.setSelected(false);
         mNavNbaNews.setSelected(false);
         mNavNbaVideo.setSelected(false);
+        mNavCode.setSelected(false);
         view.setSelected(true);
         if (view instanceof NavigationButton) {
             if (view != mCurNavBtn) {
