@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.kun.baselib.fragment.AbsFragment;
-import com.kun.diy_code.DiyCodeFragment;
+import com.kun.diy_code.code.DiyCodeFragment;
 import com.kun.news.R;
 import com.kun.news.app.Constant;
 import com.kun.news.common.widget.NavigationButton;

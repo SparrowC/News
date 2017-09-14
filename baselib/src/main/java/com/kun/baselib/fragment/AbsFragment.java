@@ -24,9 +24,9 @@ public abstract class AbsFragment extends Fragment {
         return root;
     }
 
-    protected abstract void initData();
-
     protected abstract void initView(View root);
+
+    protected abstract void initData();
 
     protected abstract int getLayout();
 
