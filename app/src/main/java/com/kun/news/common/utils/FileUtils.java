@@ -15,10 +15,7 @@ import java.io.InputStreamReader;
 import java.nio.channels.FileChannel;
 import java.text.DecimalFormat;
 
-/**
- * @author yuyh.
- * @date 16/4/9.
- */
+
 public class FileUtils {
 
     private static final String TAG = FileUtils.class.getSimpleName();

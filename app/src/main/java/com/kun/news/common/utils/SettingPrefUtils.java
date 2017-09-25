@@ -4,10 +4,7 @@ import android.text.TextUtils;
 
 import com.yuyh.library.utils.data.PrefsUtils;
 
-/**
- * @author yuyh.
- * @date 16/6/26.
- */
+
 public class SettingPrefUtils {
 
     public static String getUid() {
